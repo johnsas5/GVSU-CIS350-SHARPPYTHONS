@@ -1,6 +1,6 @@
 # Sharp Pythons
 
-Project description (~1 paragraph)
+Our team is looking to build a website to act as a budget tool for those using it. The back-end will be handled with python and the front with HTML and CSS. Some features we would like to deploy include: forms that prompt users to input data, an expense counter, graphs to show future savings, a retirement section, and age based financial suggestions.  
 
 ## Team Members and Roles
 
