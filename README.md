@@ -1,4 +1,4 @@
-# Team Name
+# Sharp Pythons
 
 Project description (~1 paragraph)
 
