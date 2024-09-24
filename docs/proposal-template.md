@@ -12,6 +12,10 @@ Team members: Matt Keuning,
 # Anticipated Technologies
 
 (What technologies are needed to build this project)
+* An agreed upon IDE (example: VS Code)
+* Access to front-end frameworks like Angular or React
+* Access to back-end frameworks like Fask or Django
+* Some type of database (MySQL)
 
 # Method/Approach
 
