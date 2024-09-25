@@ -5,7 +5,7 @@ Our team is looking to build a website to act as a budget tool for those using i
 ## Team Members and Roles
 
 * Member 1: Matt Keuning (Role 1: Front-end HTML, Role 2: Front-end CSS)
-* Member 2 (Role 3, Role 4)
+* Member 2: [Josh Carlson](https://github.com/Josh-Carlson24391/CIS350-HW2-Carlson/blob/main/README.md) (Role 3: Back-end Flask, Role 4: Back-end Python)
 * Member 3 (Role 5, Role 6)
 
 ## Prerequisites
