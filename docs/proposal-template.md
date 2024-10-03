@@ -29,7 +29,7 @@ Team members: Matt Keuning,
 # Estimated Timeline
 
 (Figure out what your major milestones for this project will be, including how long you anticipate it *may* take to reach that point)
-* First Project Deadline - 10/8/24
+* First Project Deadline - 10/13/24
 * Second Project Deadline (coding, one feature done) - 10/31/24
 * Third Project Deadline (mostly finished implementation, starting testing) - 11/21/24
 * Fourth Project Deadline (fully finished) - 12/8/24
