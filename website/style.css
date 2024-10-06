@@ -1,0 +1,201 @@
+body {
+    font-family: 'arial';
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: white;
+    padding: 10px 0;
+    text-align: right; /* Align menu to the right */
+}
+
+.help {
+    background-color: rgb(152, 41, 41);
+    border: none;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 34px;
+    width: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    color: white;
+    transition: color 0.3s;
+}
+
+.log-in {
+    background-color: rgb(152, 41, 41);
+    border: none;
+    font-size: 18px;
+    margin-left: 10px;
+    height: 34px;
+    width: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    color: white;
+    transition: color 0.3s;
+}
+
+.home {
+    background-color: rgb(152, 41, 41);
+    border: none;
+    font-size: 18px;
+    margin-left: 10px;
+    height: 34px;
+    width: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    color: white;
+    transition: color 0.3s;
+}
+
+.open-account {
+    background-color: rgb(152, 41, 41);
+    border: none;
+    font-size: 18px;
+    height: 34px;
+    width: 145px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    color: white;
+    transition: color 0.3s;
+}
+
+.open-account:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.log-in:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.home:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.help:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.open-account:active {
+    opacity: 0.75;
+}
+
+.log-in:active {
+    opacity: 0.75;
+}
+
+.home:active {
+    opacity: 0.75;
+}
+
+.help:active {
+    opacity: 0.75;
+}
+
+
+.options {
+    position: absolute;
+    top: 15px;
+    right: 1px;
+    display: flex;
+    gap: 10px;
+}
+
+
+.hero {
+    height: 100vh;
+    background: url('https://cdn.pixabay.com/photo/2017/08/07/10/22/buildings-2602324_1280.jpg') no-repeat center center/cover; /* Placeholder for background image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-area {
+    text-align: center;
+}
+
+.text-box {
+    background-color: rgb(152, 41, 41); /* Solid black background */
+    color: white; /* White text color */
+    padding: 20px;
+    border-radius: 15px; /* Rounded corners */
+    max-width: 80%; /* Limit box width */
+    margin: auto; /* Center the box */
+    text-align: center; /* Center the text */
+    width: 300px;
+}
+
+
+.text-box-log {
+    background-color: rgb(152, 41, 41);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 80%;
+    margin: auto;
+    text-align: center;
+    width: 400px;
+    height: 100px;
+    color: white;
+}
+/*
+.username {
+    padding: 15px;
+    background-color: white;
+    width: 100 px;
+    height: 50 px;
+    border-radius: 15px;
+}
+*/
+.login-text {
+    font-size: 25px;
+    margin-top: -20px;
+}
+
+.usernamefield {
+    padding: 8px;
+    width: 300px;
+    border-radius: 15px;
+    
+}
+
+.passwordfield {
+    padding: 8px;
+    width: 300px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.lock {
+    height: 25px;
+    margin-bottom: -9px;
+    width: 35px;
+}
+
+.usericon {
+    height: 25px;
+    width: 35px;
+    margin-bottom: -9px;
+}
+
+/*
+.password {
+    padding: 15px;
+    background-color: white;
+    width: 100 px;
+    height: 50 px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+*/
