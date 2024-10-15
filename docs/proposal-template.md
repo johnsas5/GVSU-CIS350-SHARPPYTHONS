@@ -1,6 +1,6 @@
 Team name: Sharp Pythons
 
-Team members: Matt Keuning, 
+Team members: Matt Keuning, Alex Johnson
 
 # Introduction
 
