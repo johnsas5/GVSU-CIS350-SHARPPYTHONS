@@ -28,7 +28,7 @@ We would also like to include a retirement section, possibly integrated with the
 
 # Method/Approach
 
-(What is your estimated "plan of attack" for developing this project)
+We are using Agile Kanban. The flexibility this provides will be helpful given the inexperience of our team and will help us pivot when there are issues and continuously work on tasks to make the most of our time and schedules.
 
 # Estimated Timeline
 
