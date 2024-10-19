@@ -32,7 +32,7 @@ function submitData() {
         alert("Data added successfully.")
     })
     .catch((error)=>{
-        alert(error)
+        //alert(error)
     })
 
 }
