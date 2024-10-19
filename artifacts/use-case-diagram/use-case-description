@@ -1,0 +1,12 @@
+Use Case: User Form
+
+Actors: User (initiator), Database
+
+Description:
+* User arrives at the form and is prompted to input relevant financial information
+* The information is sent to the databse and is saved
+* Upon completion, the user is directed to the retirement planner
+
+Cross Referneces: The input form extends to the "Age Based Suggestions" use case. This is becaus ethe users account information will be paramount to the suggestions the database will send back to the user. It is also connected to the "Login"/"Open Account" use case because the user must be authenticated before they begin or edit the form.
+
+Use Cases: The user must have completed the "Login"/"Open Account" use case.
