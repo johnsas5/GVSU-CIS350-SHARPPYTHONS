@@ -251,3 +251,28 @@ header {
     filter: blur(5px);
     z-index: -1;
 }
+
+.prefname {
+    text-align: left;
+    margin-left: 42px;
+    margin-top: 50px;
+}
+.firstnamebox {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 0px;
+    width: 300px;
+}
+
+.lastnamebox {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
