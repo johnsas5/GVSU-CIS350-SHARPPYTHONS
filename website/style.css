@@ -215,8 +215,8 @@ header {
 }
 
 .submit:hover {
-    background-color: white;
-    color: black;
+    background-color: grey;
+    color: white;
     box-shadow: none;
     border-color: black;
 }
@@ -228,7 +228,7 @@ header {
 .form {
     margin: auto;
     margin-top: 100px;
-    height: 550px;
+    height: 570px;
     width: 400px;
     background-color: white;
     text-align: center;
@@ -323,4 +323,33 @@ header {
     border: none;
     margin-top: 10px;
     width: 300px;
+}
+
+.submitform{
+    color: black;
+    background-color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    border-color: black;
+    box-shadow: none;
+    transition: background-color 0.5s;
+    transition: color 0.3s;
+    margin-top: 22px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    font: bold 13px 'arial';
+}
+
+.submitform:hover{
+    background-color: grey;
+    color: white;
+    box-shadow: none;
+    border-color: black;
+}
+
+.submitform:active{
+    opacity: 0.75;
 }
