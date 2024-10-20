@@ -235,7 +235,8 @@ header {
     z-index: 2;
     padding: 20px;
     border-radius: 10px;
-    background-color: rgb(152, 41, 41);;
+    background-color: rgb(152, 41, 41);
+    color: white;
 }
 
 .formbackground {
