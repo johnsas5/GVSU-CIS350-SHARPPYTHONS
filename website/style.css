@@ -228,7 +228,7 @@ header {
 .form {
     margin: auto;
     margin-top: 100px;
-    height: 500px;
+    height: 550px;
     width: 400px;
     background-color: white;
     text-align: center;
@@ -264,11 +264,58 @@ header {
     border-radius: 5px;
     box-shadow: none;
     border: none;
-    margin-top: 0px;
     width: 300px;
 }
 
 .lastnamebox {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.findata {
+    text-align: left;
+    margin-left: 42px;
+}
+
+.monthin {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    width: 300px;
+}
+
+.monthex {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.pinfo {
+    text-align: left;
+    margin-left: 42px;
+}
+
+.curage {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    width: 300px;
+}
+
+.retage {
     padding: 10px;
     text-align: left;
     border-radius: 5px;
