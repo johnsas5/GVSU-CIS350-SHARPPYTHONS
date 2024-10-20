@@ -236,6 +236,7 @@ header {
     border-radius: 10px;
     background-color: rgb(152, 41, 41);
     color: white;
+    opacity: 0.9;
 }
 
 .formbackground {
