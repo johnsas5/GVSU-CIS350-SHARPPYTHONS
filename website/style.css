@@ -325,7 +325,7 @@ header {
     width: 300px;
 }
 
-.submitform{
+.submitform {
     color: black;
     background-color: white;
     text-align: center;
@@ -343,13 +343,42 @@ header {
     font: bold 13px 'arial';
 }
 
-.submitform:hover{
+.submitform:hover {
     background-color: grey;
     color: white;
     box-shadow: none;
     border-color: black;
 }
 
-.submitform:active{
+.submitform:active {
     opacity: 0.75;
+}
+
+.spinner{
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    border: 2px, solid, transparent;
+    border-top-color: black;
+    display: none;
+    animation: spin 1s infinite linear;
+    margin-left: 25px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading .spinner {
+    display: block;
+}
+
+.loading .subtext {
+    visibility: hidden;
+}
+
+.loading .submitform:hover {
+    background-color: white;
 }

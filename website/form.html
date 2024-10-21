@@ -13,30 +13,34 @@
     </section>
     <div class="formbackground">
     </div>
-    <div class="form">
+    <div class="form" id="form">
         <h2 class="formheader">Financial Form</h2>
         <h3 class="prefname">Preferred Name</h3>
         <div>
-            <input class="firstnamebox", type="text", placeholder="First Name">
+            <input class="firstnamebox" type="text" placeholder="First Name">
         </div>
         <div>
-            <input class="lastnamebox", type="text", placeholder="Last Name">
+            <input class="lastnamebox" type="text" placeholder="Last Name">
         </div>
         <h3 class="findata">Financial Data</h3>
         <div>
-            <input class="monthin", type="number", placeholder="Total Monthly Income">
+            <input class="monthin" type="number" placeholder="Total Monthly Income">
         </div>
         <div>
-            <input class="monthex", type="number", placeholder="Total Monthly Expenses">
+            <input class="monthex" type="number" placeholder="Total Monthly Expenses">
         </div>
         <h3 class="pinfo">Personal Related Information</h3>
         <div>
-            <input class="curage", type="number", placeholder="Current Age">
+            <input class="curage" type="number" placeholder="Current Age">
         </div>
         <div>
-            <input class="retage", type="number", placeholder="Desired Retirement Age">
+            <input class="retage" type="number" placeholder="Desired Retirement Age">
         </div>
-        <button class="submitform">Submit</button>
+        <button type="button" class="submitform" id="submitform">
+            <span class="subtext" id="subtext"><strong>Submit</strong></span>
+            <div class="spinner" id="spinner"></div>
+        </button>
     </div>
+    <script src="app.js" type="module" defer></script>
 </body>
 </html>
