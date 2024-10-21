@@ -1,0 +1,31 @@
+# testing action to deploy to pythonanywhere
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: Build React App
+      run: |
+        cd src/Budgeting-app/client
+        npm install
+        npm run build
+        
+    - name: Deploy to PythonAnywhere
+      uses: webfactory/pythonanywhere-deploy@main
+      with:
+        username: ${{ secrets.PYTHONANYWHERE_USERNAME }}
+        api-token: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
+        domain: ${{ secrets.PYTHONANYWHERE_DOMAIN }}
+        project-path: ${{ secrets.PYTHONANYWHERE_PROJECT_PATH }}
+        source: ./
