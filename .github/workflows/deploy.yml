@@ -21,11 +21,10 @@ jobs:
         npm install
         npm run build
         
-    - name: Deploy to PythonAnywhere
-      uses: webfactory/pythonanywhere-deploy@main
+    - name: Reload webapp
+      uses: jensvog/pythonanywhere-webapp-reload-action@v1
       with:
+        host: 'www.pythonanywhere.com'
         username: ${{ secrets.PYTHONANYWHERE_USERNAME }}
         api-token: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
-        domain: ${{ secrets.PYTHONANYWHERE_DOMAIN }}
-        project-path: ${{ secrets.PYTHONANYWHERE_PROJECT_PATH }}
-        source: ./
+        domain-name: ${{ secrets.PYTHONANYWHERE_DOMAIN }}
