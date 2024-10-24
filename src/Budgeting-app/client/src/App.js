@@ -3,6 +3,8 @@ import Home from "./Home";
 import FinancialData from "./FinancialData";
 import Summary from "./Summary";
 import NoPage from "./NoPage";
+import "./App.css";
+import "./index.css";
 
 function App() {
 

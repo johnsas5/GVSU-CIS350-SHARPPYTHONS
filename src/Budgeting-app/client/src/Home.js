@@ -1,31 +1,35 @@
+import React, {useState} from 'react';
 import Login from "./Login";
 import SignUp from "./SignUp";
 
 function Home() {
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
 
-  const loginClick = () => {
-    Login();
+  const onClickLogin = () => {
+    setShowLogin(!showLogin);
   }
-
-  const signUpClick = () => {
-    SignUp();
+  const onClickSignUp = () => {
+    setShowSignUp(!showSignUp);
   }
 
   return (
     <div>
       <section>
         <button 
-          onClick={signUpClick}
+          onClick={onClickLogin}
           className="open-account">
           Sign Up
         </button>
         <button 
-          onClick={loginClick}
+          onClick={onClickSignUp}
           className="log-in">
           Log In
         </button>
         <button className="help">Help</button>
       </section>
+      <Login isOpen={showLogin} onClose={() => setShowLogin(false)} />
+      <SignUp isOpen={showSignUp} onClose={() => setShowSignUp(false)} />
     </div>
   );
 }

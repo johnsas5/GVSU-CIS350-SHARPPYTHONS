@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase';
 
-function SignUp() {
-  const navigate = useNavigate();
+function SignUp({isOpen, onClose}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
 
@@ -15,7 +13,7 @@ function SignUp() {
       // Signed in
       const user = userCredential.user;
       console.log(user);
-      navigate("/login")
+      onClose();
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -24,10 +22,11 @@ function SignUp() {
     });
   }
 
+  if (!isOpen) return (null);
   return (
-    <div class="text-area">
-      <div class="text-box-log">
-        <p class="login-text"><strong>Open Account</strong></p>
+    <div className="text-area">
+      <div className="text-box-log">
+        <p className="login-text"><strong>Open Account</strong></p>
         <div className="username"> 
           <input type="text"
             placeholder="Choose a Username" 
