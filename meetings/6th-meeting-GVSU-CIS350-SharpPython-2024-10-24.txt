@@ -1,0 +1,17 @@
+3rd meeting:
+Team Name: SharpPythons
+Date: 10/24/2024
+Time: 1:00-1:30
+Members Present: Matt, Alex, Josh, Jason, and Praharsha
+
+Discussion:
+* Matt worked on front end authentication, sign up, login pages
+* Alex worked on putting that html and css into react
+* 
+
+To do:
+* Come up with finciancial data questions in text doc
+* Make sure it contains list of predefined categories
+* Finish server side authorization and save data tests
+* Fix doc structure for react project
+* start figureing out requests to back end for data
