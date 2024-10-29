@@ -13,7 +13,10 @@ app = Flask(__name__)
 #saves a path to our service account key to authenticate the app
 #with the server
 service_account_key_path = "/flask-server/private_key/sharppythons-firebase-adminsdk-1yoay-a2c4b5b9ee.json"
-default_app = firebase_admin.initialize_app(service_account_key_path)
+cred_obj = firebase_admin.credentials.Cerftificate(service_account_key_path)
+default_app = firebase_admin.initialize_app(cred_obj, {
+	'databaseURL' : databaseURL
+	})
 
 
 #Ref will reference the root directory of our database
@@ -54,6 +57,25 @@ def authenticate_push_request(user_data, user_token):
 		#Will overwrite anything that is already there, not sure
 		#if this will be an issue yet.
 		ref.set(file_contents)
-
+		#Return exit code 1 if push was succesful
+		return 1
+	else:
+		#Return exit code 0 if unable to authenticate request
+		return 0
+def authenticate_pull_request(user_token):
+	#Check to see if firebase can authenticate the token
+	if(auth.verify_id_token(user_token)):
+		#Extracts token
+		decoded_token = auth.verify_id_token(user_token)
+		#Extracts user_id from token
+		uid = decoded_token['uid']
+		#Sets the reference point to user_data/user_id
+		ref = db.reference(f'/user_data/%s', uid)
+		#Returns data stored under /user_data/user_id
+		return ref.get()
+	else:
+		#Returns exit code 0 if unable to authenticate request
+		return 0
+		
 if __name__ == "__main__":
   app.run(debug=True)
