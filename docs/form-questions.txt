@@ -5,6 +5,7 @@ Form Questions:
 * What was your monthly total expense?
 * Categories:
 - Housing
+- Utilities
 - Transportation
 - Food
 - Debt Repayment
