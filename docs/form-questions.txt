@@ -1,5 +1,7 @@
 Form Questions:
 * What was your monthly income?
+* What is your age?
+* What age do you plan on retiring?
 * What was your monthly total expense?
 * Categories:
 - Housing
