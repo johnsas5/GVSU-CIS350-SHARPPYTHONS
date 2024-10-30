@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    overflow: hidden;
 }
 
 header {
@@ -228,7 +229,7 @@ header {
 .form {
     margin: auto;
     margin-top: 100px;
-    height: 570px;
+    height: 5000px;
     width: 400px;
     background-color: white;
     text-align: center;
@@ -237,6 +238,13 @@ header {
     background-color: rgb(152, 41, 41);
     color: white;
     opacity: 0.9;
+    overflow-y: auto;
+    position: relative;
+    max-height: 70vh;
+}
+
+.form::-webkit-scrollbar {
+    display: none;
 }
 
 .formbackground {
@@ -251,6 +259,8 @@ header {
     background-repeat: no-repeat;
     filter: blur(7px);
     z-index: -1;
+    overflow: hidden;
+    background-attachment: fixed;
 }
 
 .prefname {
@@ -325,6 +335,126 @@ header {
     width: 300px;
 }
 
+.housing {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.utilities {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.transportation {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.food {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.debtrepayment {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.insurance {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.health {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.entertainment {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.education {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.investments {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.family {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.other {
+    padding: 10px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+    margin-top: 10px;
+    width: 300px;
+}
+
 .submitform {
     color: black;
     background-color: white;
@@ -362,7 +492,8 @@ header {
     border-top-color: black;
     display: none;
     animation: spin 1s infinite linear;
-    margin-left: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @keyframes spin {
