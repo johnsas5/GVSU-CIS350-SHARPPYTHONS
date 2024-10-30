@@ -311,6 +311,11 @@ header {
     width: 300px;
 }
 
+.breakdown {
+    text-align: left;
+    margin-left: 42px;
+}
+
 .pinfo {
     text-align: left;
     margin-left: 42px;
@@ -341,7 +346,6 @@ header {
     border-radius: 5px;
     box-shadow: none;
     border: none;
-    margin-top: 10px;
     width: 300px;
 }
 
