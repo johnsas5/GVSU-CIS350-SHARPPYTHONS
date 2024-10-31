@@ -1,7 +1,8 @@
+import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import FinancialData from "./FinancialData";
-import Summary from "./Summary";
+import Home from "./Home/Home";
+import FinancialData from "./FinancialData/FinancialData";
+import Summary from "./Summary/Summary";
 import NoPage from "./NoPage";
 import "./App.css";
 import "./index.css";
