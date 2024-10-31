@@ -39,6 +39,8 @@ var education = document.querySelector("#education"); // id education
 var investments = document.querySelector("#investments"); // id investments
 var familyexpenses = document.querySelector("#familyexpenses"); // id familyexpenses
 var other = document.querySelector("#other"); // id other
+var cage = document.querySelector(#cage);
+var rage = document.querySelector(#rage);
 
 if (submit) {
     function submitData() {
@@ -61,6 +63,38 @@ if (submit) {
 
 
 const submitform = document.getElementById('submitform');
+
+if (submitform) {
+    function submitFormData () {
+        set(ref(db, "FormData/"), {
+            FirstName: firstname.value,
+            LastName: lastname.value,
+            TotalMonthlyIncome: totin.value,
+            TotalMonthlyExpenses: totex.value,
+            Housing: housing.value,
+            Utilities: utilities.value,
+            Transportation: transportation.value,
+            Food: food.value,
+            Debtrepayment: debtrepayment.value,
+            Insurance: insurance.value,
+            Health: health.value,
+            Entertainment: entertainment.value,
+            Education: education.value,
+            Investments: investments.value,
+            FamilyExpenses: familyexpenses.value,
+            Other: other.value,
+            CurrentAge: cage.value,
+            DesiredRetirementAge: rage.value
+        })
+        .then(()=>{
+            alert("Data added successfully")
+        })
+        .catch((error)=>{
+            alert("Error")
+        })
+    }
+    submitform.addEventListener('click', submitFormData);
+}
 
 if (submitform) {
     function loadspin(e) {
