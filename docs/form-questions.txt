@@ -1,0 +1,18 @@
+Form Questions:
+* What was your monthly income?
+* What is your age?
+* What age do you plan on retiring?
+* What was your total monthly expenses?
+* Categories:
+- Housing
+- Utilities
+- Transportation
+- Food
+- Debt Repayment
+- Insurance
+- Health and Wellness
+- Entertainment
+- Education
+- Investments
+- Family Expenses
+- Other
