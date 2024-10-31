@@ -22,7 +22,23 @@ const db = getDatabase(app);
 var usernamefield = document.querySelector("#usernamefield1");
 var passwordfield = document.querySelector("#passwordfield1");
 var submit = document.querySelector("#submit1");
-
+var submitform;
+var firstname;
+var lastname;
+var totin;
+var totex;
+var housing;
+var utilities;
+var transporation;
+var food;
+var debtrepayment;
+var insurance;
+var health;
+var entertainment;
+var education;
+var investments;
+var familyexpenses;
+var other;
 
 if (submit) {
     function submitData() {
