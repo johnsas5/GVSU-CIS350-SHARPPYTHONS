@@ -39,8 +39,8 @@ var education = document.querySelector("#education"); // id education
 var investments = document.querySelector("#investments"); // id investments
 var familyexpenses = document.querySelector("#familyexpenses"); // id familyexpenses
 var other = document.querySelector("#other"); // id other
-var cage = document.querySelector(#cage);
-var rage = document.querySelector(#rage);
+var cage = document.querySelector("#cage"); // id cage
+var rage = document.querySelector("#rage"); // id rage
 
 if (submit) {
     function submitData() {
