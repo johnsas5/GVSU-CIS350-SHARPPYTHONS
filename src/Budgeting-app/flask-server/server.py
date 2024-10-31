@@ -57,11 +57,11 @@ def authenticate_push_request(user_data, user_token):
 		#Will overwrite anything that is already there, not sure
 		#if this will be an issue yet.
 		ref.set(file_contents)
-		#Return exit code 1 if push was succesful
-		return 1
+		#Return exit code 200 if push was succesful
+		return 200
 	else:
 		#Return exit code 0 if unable to authenticate request
-		return 0
+		return 402
 def authenticate_pull_request(user_token):
 	#Check to see if firebase can authenticate the token
 	if(auth.verify_id_token(user_token)):
@@ -75,7 +75,7 @@ def authenticate_pull_request(user_token):
 		return ref.get()
 	else:
 		#Returns exit code 0 if unable to authenticate request
-		return 0
+		return 402
 		
 if __name__ == "__main__":
   app.run(debug=True)
