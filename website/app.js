@@ -63,9 +63,14 @@ if (submit) {
 
 
 const submitform = document.getElementById('submitform');
+if (submitform) {
+    console.log('Element is loaded');
+} else {
+    console.log('Element is not laoded yet');
+}
 
 if (submitform) {
-    function submitFormData () {
+    function submitFormData() {
         set(ref(db, "FormData/"), {
             FirstName: firstname.value,
             LastName: lastname.value,
@@ -96,17 +101,18 @@ if (submitform) {
     submitform.addEventListener('click', submitFormData);
 }
 
-if (submitform) {
-    function loadspin(e) {
-        e.preventDefault(); // Prevent the default form submission
-        submitform.classList.add('loading');
-        // Simulate a delay for form submission
-        setTimeout(() => {
-            submitform.classList.remove('loading');
-            alert('Form Submitted'); // Simulate form submission response
-        }, 3000); // 3 seconds delay
-    }
+
+// if (submitform) {
+//     function loadspin(e) {
+//         e.preventDefault(); // Prevent the default form submission
+//         submitform.classList.add('loading');
+//         // Simulate a delay for form submission
+//         setTimeout(() => {
+//             submitform.classList.remove('loading');
+//             alert('Form Submitted'); // Simulate form submission response
+//         }, 3000); // 3 seconds delay
+//     }
     
-    submitform.addEventListener('click', loadspin);
-}
+//     submitform.addEventListener('click', loadspin);
+// }
 
