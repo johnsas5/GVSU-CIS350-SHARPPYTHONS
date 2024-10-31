@@ -1,0 +1,16 @@
+Date: 10/31/2024
+Time: 1:00-1:30
+Members Present: Matt, Josh, Jason, Praharsha
+
+* Worked on firebase
+* Worked on form questions
+* Worked on form html and css
+* We talked about completing tasks in a simultaneous manner rather than waiting for other things to be done
+
+Things to do:
+* Add run instructions to the read me
+* Change JS to connect to the firebase
+* Matt will work on JS to connect form to firebase
+* Josh will get function written for user class abilities (pulls user token from front end)
+* Jason will work on user class once Josh finishes the function
+* Matt will work on writing HTML and CSS for Account Summary
