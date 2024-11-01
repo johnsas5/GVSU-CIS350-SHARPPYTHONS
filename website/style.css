@@ -517,3 +517,60 @@ header {
 .loading .submitform:hover {
     background-color: white;
 }
+
+.asumBackground {
+    position: absolute;
+    min-height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-size: cover;
+    background: url('https://cdn.pixabay.com/photo/2017/08/07/10/22/buildings-2602324_1280.jpg') no-repeat center center/cover;
+    /* Placeholder for background image */
+    background-repeat: no-repeat;
+    filter: blur(7px);
+    z-index: -1;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+.accountSummary {
+    margin: left;
+    margin-top: 100px;
+    margin-left: 100px;
+    height: 5000px;
+    width: 400px;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(152, 41, 41);
+    color: white;
+    opacity: 0.9;
+    overflow-y: auto;
+    position: relative;
+    max-height: 70vh;
+}
+
+.graph {
+    margin: right;
+    margin-top: 100px;
+    margin-left: 100px;
+    height: 500px;
+    width: 400px;
+    background-color: rgb(152, 41, 41);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    opacity: 0.9;
+    max-height: 70vh;
+}
+
+.graphText {
+    color: white;
+}
+
+.asumText {
+    color: white;
+}

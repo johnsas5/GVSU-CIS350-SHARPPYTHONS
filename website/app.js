@@ -22,7 +22,7 @@ const db = getDatabase(app);
 var usernamefield = document.querySelector("#usernamefield1");
 var passwordfield = document.querySelector("#passwordfield1");
 var submit = document.querySelector("#submit1");
-//var submitform = document.querySelector("#submitform");
+var submitform = document.querySelector("#submitform");
 var firstname = document.querySelector("#firstname"); // id firstname
 var lastname = document.querySelector("#lastname"); // id lastname
 var totin = document.querySelector("#totin"); // id totin
@@ -62,16 +62,12 @@ if (submit) {
 
 
 
-const submitform = document.getElementById('submitform');
-if (submitform) {
-    console.log('Element is loaded');
-} else {
-    console.log('Element is not laoded yet');
-}
+//const submitform = document.getElementById('submitform');
+
 
 if (submitform) {
     function submitFormData() {
-        set(ref(db, "FormData/"), {
+        set(ref(db, "FormData/" + firstname.value), {
             FirstName: firstname.value,
             LastName: lastname.value,
             TotalMonthlyIncome: totin.value,
@@ -95,7 +91,7 @@ if (submitform) {
             alert("Data added successfully")
         })
         .catch((error)=>{
-            alert("Error")
+            //alert("Error")
         })
     }
     submitform.addEventListener('click', submitFormData);
