@@ -553,7 +553,6 @@ header {
 }
 
 .graph {
-    margin: right;
     margin-top: 100px;
     margin-left: 100px;
     height: 500px;
@@ -573,4 +572,50 @@ header {
 
 .asumText {
     color: white;
+}
+
+.updateForm {
+    background-color: rgb(152, 41, 41);
+    border: none;
+    font-size: 18px;
+    height: 34px;
+    width: 130px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.5s;
+    transition: color 0.3s;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.updateForm:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.updateForm:active {
+    opacity: 0.75;
+}
+
+.signout {
+    background-color: rgb(152, 41, 41);
+    border: none;
+    font-size: 18px;
+    height: 34px;
+    width: 110px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.5s;
+    transition: color 0.3s;
+}
+
+.signout:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.signout:active {
+    opacity: 0.75;
 }

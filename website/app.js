@@ -42,9 +42,6 @@ var other = document.querySelector("#other1"); // id other
 var cage = document.querySelector("#cage1"); // id cage
 var rage = document.querySelector("#rage1"); // id rage
 
-
-alert("hello")
-
 if (submit) {
     function submitData() {
         set(ref(db, "Users/" + usernamefield.value), {
@@ -69,9 +66,7 @@ if (submit) {
 
 
 if (submitform) {
-    alert("made it here")
     function submitFormData() {
-        alert("made it here too")
         set(ref(db, "FormData/"), {
             FirstName: firstname.value,
             LastName: lastname.value,
