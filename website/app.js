@@ -22,25 +22,28 @@ const db = getDatabase(app);
 var usernamefield = document.querySelector("#usernamefield1");
 var passwordfield = document.querySelector("#passwordfield1");
 var submit = document.querySelector("#submit1");
-var submitform = document.querySelector("#submitform");
-var firstname = document.querySelector("#firstname"); // id firstname
-var lastname = document.querySelector("#lastname"); // id lastname
-var totin = document.querySelector("#totin"); // id totin
-var totex = document.querySelector("#totex"); // id totex
-var housing = document.querySelector("#housing"); // id housing
-var utilities = document.querySelector("#utilities"); // id utilities
-var transportation = document.querySelector("#transportation"); // id transportation
-var food = document.querySelector("#food"); // id food
-var debtrepayment = document.querySelector("#debtrepayment"); // id debtrepayment
-var insurance = document.querySelector("#insurance"); // id insurance
-var health = document.querySelector("#health"); // id health
-var entertainment = document.querySelector("#entertainment"); // id entertainment
-var education = document.querySelector("#education"); // id education
-var investments = document.querySelector("#investments"); // id investments
-var familyexpenses = document.querySelector("#familyexpenses"); // id familyexpenses
-var other = document.querySelector("#other"); // id other
-var cage = document.querySelector("#cage"); // id cage
-var rage = document.querySelector("#rage"); // id rage
+var submitform = document.querySelector("#submitform1");
+var firstname = document.querySelector("#firstname1"); // id firstname
+var lastname = document.querySelector("#lastname1"); // id lastname
+var totin = document.querySelector("#totin1"); // id totin
+var totex = document.querySelector("#totex1"); // id totex
+var housing = document.querySelector("#housing1"); // id housing
+var utilities = document.querySelector("#utilities1"); // id utilities
+var transportation = document.querySelector("#transportation1"); // id transportation
+var food = document.querySelector("#food1"); // id food
+var debtrepayment = document.querySelector("#debtrepayment1"); // id debtrepayment
+var insurance = document.querySelector("#insurance1"); // id insurance
+var health = document.querySelector("#health1"); // id health
+var entertainment = document.querySelector("#entertainment1"); // id entertainment
+var education = document.querySelector("#education1"); // id education
+var investments = document.querySelector("#investments1"); // id investments
+var familyexpenses = document.querySelector("#familyexpenses1"); // id familyexpenses
+var other = document.querySelector("#other1"); // id other
+var cage = document.querySelector("#cage1"); // id cage
+var rage = document.querySelector("#rage1"); // id rage
+
+
+alert("hello")
 
 if (submit) {
     function submitData() {
@@ -66,8 +69,10 @@ if (submit) {
 
 
 if (submitform) {
+    alert("made it here")
     function submitFormData() {
-        set(ref(db, "FormData/" + firstname.value), {
+        alert("made it here too")
+        set(ref(db, "FormData/"), {
             FirstName: firstname.value,
             LastName: lastname.value,
             TotalMonthlyIncome: totin.value,
@@ -91,7 +96,7 @@ if (submitform) {
             alert("Data added successfully")
         })
         .catch((error)=>{
-            //alert("Error")
+            alert("Error")
         })
     }
     submitform.addEventListener('click', submitFormData);
