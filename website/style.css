@@ -576,7 +576,7 @@ header {
     width: 600px;
     margin-left: 100px;
     margin-top: 150px;
-    background-color: grey;
+    background-color: rgb(117, 117, 117);
     text-align: center;
     padding: 20px;
     border-radius: 10px;
