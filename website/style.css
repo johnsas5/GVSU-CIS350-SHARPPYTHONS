@@ -556,7 +556,7 @@ header {
 .aholdername {
     text-align: left;
     margin-left: 10px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .balance {
@@ -590,6 +590,22 @@ header {
 
 .asumText {
     color: white;
+}
+
+.agetextasum {
+    text-align: left;
+    margin-left: 10px;
+    color: white;
+}
+
+.dagetextasum {
+    text-align: left;
+    margin-left: 10px;
+    color: white;
+}
+
+.tmbd {
+    margin-top: 30px;
 }
 
 .updateForm {
