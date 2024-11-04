@@ -91,6 +91,31 @@ function FinancialData() {
       });
     };
 
+    return (
+      <div>
+        <section className='options'>
+          <button onClick={() => window.location.href = 'index.html'} classname="home">Home</button>
+          {/* This will eventually need an onClick too but we have not made the help page yet */}
+          <button className='help'>Help</button>
+        </section>
+        <div className='formbackground'></div>
+        <div className='form' id='form'>
+          <h2 className='formheader'>Financial Form</h2>
+          <h3 className='prefname'>Preferred Name</h3>
+        </div>
+        <div>
+        <input
+          className='firstnamebox'
+          type='text'
+          placeholder='First Name'
+          id='firstname1'
+          value={firstName}
+          onChange={(value) => setFirstName(v.target.value)}
+        />
+        </div>
+
+      </div>
+    )
 
   }
 
