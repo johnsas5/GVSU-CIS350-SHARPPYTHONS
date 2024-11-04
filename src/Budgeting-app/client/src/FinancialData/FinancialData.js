@@ -2,6 +2,8 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { getAuth } from 'firebase/auth';
+import { useNavigate } from "react-router-dom"
+
 
 function FinancialData() {
   const [data, setData] = useState(null);
@@ -27,6 +29,53 @@ function FinancialData() {
 
     getUserData();
   }, []);
+
+  function FinancialForm() {
+    const navigate = useNavigate();
+    // Making variables for each input field
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [monthlyIncome, setMonthlyIncome] = useState('');
+    const [monthlyExpenses, setMonthlyExpenses] = useState('');
+    const [housing, setHousing] = useState('');
+    const [utilities, setUtilities] = useState('');
+    const [transportation, setTransportation] = useState('');
+    const [food, setFood] = useState('');
+    const [debtRepayment, setDebtRepayment] = useState('');
+    const [insurance, setInsurance] = useState('');
+    const [health, setHealth] = useState('');
+    const [entertainment, setEntertainment] = useState('');
+    const [education, setEducation] = useState('');
+    const [investments, setInvestments] = useState('');
+    const [familyExpenses, setFamilyExpenses] = useState('');
+    const [other, setOther] = useState('');
+    const [currentAge, setCurrentAge] = useState('');
+    const [retirementAge, setRetirementAge] = useState('');
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+      const formData = {
+        firstName,
+        lastName,
+        monthlyIncome,
+        monthlyExpenses,
+        housing,
+        utilities,
+        transportation,
+        food,
+        debtRepayment,
+        insurance,
+        health,
+        entertainment,
+        education,
+        investments,
+        familyExpenses,
+        other,
+        currentAge,
+        retirementAge
+      }
+    }
+  }
 
   if (data == null) {
     return <h1>Error retreiving data</h1>
