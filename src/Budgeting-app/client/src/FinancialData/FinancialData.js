@@ -73,8 +73,25 @@ function FinancialData() {
         other,
         currentAge,
         retirementAge
-      }
-    }
+      };
+
+      // Send a POST request to the endpoint
+      axios.post('/FinancialData', formData)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log('Data Submitted', formData);
+        // Move the user to the account summary page
+        navigate('/Summary');
+        } else {
+        console.log('Error Occured');
+        }
+      })
+      .catch((error) => {
+        console.error('Error: ', error);
+      });
+    };
+
+
   }
 
   if (data == null) {
