@@ -9,9 +9,11 @@ function Home() {
   const [showSignUp, setShowSignUp] = useState(false);
 
   const onClickLogin = () => {
+    setShowSignUp(false);
     setShowLogin(!showLogin);
   }
   const onClickSignUp = () => {
+    setShowLogin(false);
     setShowSignUp(!showSignUp);
   }
 
