@@ -1,0 +1,104 @@
+Tasks that have not been completed:
+
+
+Task 1:
+Name: Help Page Front End.
+Description: Write the React for the help page.
+Expected Time to Complete: November 11.
+Responsible (person in charge): Matt
+
+
+Task 2:
+Name: Graph Front End.
+Description: Write the React to take the graph from the backend and put it in the summary.
+Expected Time to Complete: November 11.
+Responsible (person in charge): Matt or Alex
+
+
+Task 3:
+Name: Suggestion(s).
+Description: Write the React to take the suggestion(s) from the backend and put it in the summary.
+Expected Time to Complete: November 18.
+Responsible (person in charge): Matt or Alex
+
+
+Task 4:
+Name: Test Front End.
+Description: Make sure that the React pages are working properly.
+Expected Time to Complete: November 25.
+Responsible (person in charge): Matt or Alex 
+
+
+Task 5:
+Name: Calculate Expense of each Category
+Description: Write a function for the back end that calculates each expense category as a percentage of their monthly income, and outputs a JSON file for each user
+Expected Time to Complete: November 7
+Responsible (person in charge): Josh or Jason
+
+
+Task 6:
+Name: Save Financial Data Endpoint
+Description: Make endpoints in the back end for the financial data the user inputs
+Expected Time to Complete: November 11
+Responsible (person in charge): Josh or Jason
+
+
+Task 7:
+Name: Pull user authentication token from the front end
+Description: Write a function to pull the current user authentication token from the front end, and return the user id
+Expected Time to Complete: November 7
+Responsible (person in charge): Josh or Jason
+
+
+
+
+Tasks that have been completed:
+
+
+Task 1:
+Name: Login Page Front End.
+Description: Write the CSS and HTML for the login page and then transfer it to React.
+Expected Time to Complete: Already Done.
+Responsible (person in charge): Matt (wrote HTML and CSS) and Alex (transferred to React and wrote the JS portion to connect with firebase).
+
+
+Task 2:
+Name: Sign Up Page Front End.
+Description: Write the CSS and HTML for the sign up page and then transfer to React.
+Expected Time to Complete: Already Done.
+Responsible (person in charge): Matt (wrote HTML and CSS) and Alex (transferred to React and wrote the JS portion to connect with Firebase).
+
+
+Task 3:
+Name: Home Page Front End.
+Description: Write the CSS and HTML for the home page and then transfer to React.
+Expected Time to Complete: Already Done.
+Responsible (person in charge): Matt (wrote HTML and CSS) and Alex (transferred to React).
+
+
+Task 4: 
+Name: Financial Form Front End.
+Description: Write the CSS and HTML for the home page and then transfer to React.
+Expected Time to Complete: Already Done.
+Responsible (person in charge): Alex (wrote the axios.get) and Matt (wrote the axios.post and transferred to React).
+
+
+Task 5:
+Name: Account Summary Front End.
+Description: Write the CSS and HTML for the account summary and transfer to React.
+Expected Time to Complete: Already Done.
+Responsible (person in charge): Matt
+
+
+Task 6:
+Name: Firebase Authentication
+Description: Add google sign authentication to firebase
+Expected Time to Complete: Already Done.
+Responsible (person in charge): Josh
+
+
+Task 7:
+Name: Authorization for the Back End
+Description: Write authorization for back end to access resources
+Expected Time to Complete: Already Done
+Responsible (person in charge): Josh
