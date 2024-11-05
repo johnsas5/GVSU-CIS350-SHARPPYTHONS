@@ -1,6 +1,5 @@
 import React from 'react';
-import  { getUserData } from '../UserDataRequests';
-import React from 'react';
+import { GetUserData } from '../UserDataRequests';
 import { useEffect, useState } from 'react';
 import RetirementGraph from './RetirementGraph';
 import SavingsGraph from './SavingsGraph';
@@ -11,7 +10,7 @@ function Summary() {
   const [userData, setUserData] = useState(new userData());
 
   useEffect(() => {
-    const data = getUserData();
+    const data = GetUserData();
     if (data != null) {
       return (<h1>No user data retreived</h1>)
     }
