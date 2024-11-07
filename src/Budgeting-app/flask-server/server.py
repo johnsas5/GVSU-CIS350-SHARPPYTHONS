@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 #saves a path to our service account key to authenticate the app
 #with the server
-service_account_key_path = "/flask-server/private_key/sharppythons-firebase-adminsdk-1yoay-a2c4b5b9ee.json"
+service_account_key_path = "/flask-server/new_private_key/sharppythons-firebase-adminsdk-1yoay-807f2b4b03.json"
 cred_obj = firebase_admin.credentials.Cerftificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL' : databaseURL
