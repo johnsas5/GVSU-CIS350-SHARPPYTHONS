@@ -1,0 +1,16 @@
+Date: 11/07/2024
+Time: 1:00-1:30
+Members Present: Matt, Josh, Jason, Alex
+
+Things accomplished this week:
+* Adjusted back end code to work with our old firebase account
+* Worked on the financial form and account summary pages on the front end
+* Created a template for back end routes
+* Created a user data class, with a method to calculate expenses as percentages
+
+Things to do:
+* Create a help page with instructions on how to use the website (Matt)
+* Work on routes for back end (Josh and Jason)
+* Include react charts to display the user financial data (Matt and Alex)
+* Write a back end function to calculate financial data for the charts (Josh and Jason)
+* Finilize code by the end of next week
