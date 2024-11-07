@@ -14,7 +14,7 @@ function FinancialData() {
 
   useEffect(() => {
     const getUserData = async () => {
-      axios.get("/FinancialData", {
+      axios.get("http://localhost:5000/FinancialData", {
         headers: { 
           'Authorization': 'Bearer ' + getAuth().currentUser.idToken
         }
@@ -35,7 +35,7 @@ function FinancialData() {
   const onSubmit = (e) => {
     e.preventDefault();
     // Send a POST request to the endpoint
-    axios.post('/FinancialData', userData, {
+    axios.post('http://localhost:5000/FinancialData', userData, {
       headers: { 
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + getAuth().currentUser.idToken
