@@ -1,7 +1,7 @@
 import json
 import firebase_admin
 from urllib import response
-from flask import Flask, make_response
+from flask import Flask, make_response, request, jsonify
 from firebase_admin import db
 
 
@@ -18,6 +18,8 @@ cred_obj = firebase_admin.credentials.Certificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL' : 'https://sharppythons-default-rtdb.firebaseio.com'
 	})
+
+
 
 
 #Ref will reference the root directory of our database
@@ -70,7 +72,7 @@ class User:
 			return 0
 		#Function to authenticate a push request to the server
 		#Takes the user_data as a json file path
-	def authenticate_push_request(self):
+	def authenticate_push_request(self, user_data):
 		#Authenticates user_token passed from web app
 
 		#if firebase_admin can authenticate the token with no errors,
@@ -136,21 +138,60 @@ def members():
 
 @app.route('/FinancialData', methods=['GET'])
 def GetFinancialData():
-  #get firebase token id from header
-  #verify firebase token still valid
-  #get data based on uid
-  #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
-	return Response
+	#get firebase token id from header
+	#Gets the id_token from the request header
+	id_token = request.headers.get('Authorization')
+	#verify firebase token still valid#verify firebase token still valid
+	#If authorization fails, return exit code 402
+	if not id_token:
+		return 402
+	#Grabs just the user_token from the header
+	user_token = id_token.split('Bearer ')[-1]
+
+	#get data based on uid
+	cur_user = User(user_token)
+	user_data = cur_user.authenticate_pull_request()
+	
+#return flask response object: set data and response status code 
+#(can create response object yourself of use jsonify function)
+
+	response = make_response(json.dumps(user_data))
+	response.headers['Content-Type'] = 'application/json'
+	return response
+  
+  
+  
+  
 
 #flask financialData route for POST method
 
 @app.route('/FinancialData', methods=['POST'])
 def PostFinancialData():
+	#Gets data file from header
+	data_token = request.headers.get('Data')
+	data = data_token.slice('Data ')[-1]
   #get firebase token id from header
-  #verify firebase token still valid
-  #save data to firebase based on uid
-  #return flask response object: response status code (can create response object yourself of use jsonify function)
-	return Response
+	#Gets the id_token from the request header
+	id_token = request.headers.get('Authorization')
+	#verify firebase token still valid#verify firebase token still valid
+	#If authorization fails, return exit code 402
+	if not id_token:
+		return 402
+	#Grabs just the user_token from the header
+	user_token = id_token.split('Bearer ')[-1]
+
+	#save data to firebase based on uid
+	cur_user = User(user_token)
+	user_data = cur_user.authenticate_push_request(data)
+	
+#return flask response object: set data and response status code 
+#(can create response object yourself of use jsonify function)
+	response = make_response(json.dumps(user_data))
+	response.headers['Content-Type'] = 'application/json'
+	return response
+  
+  
+  
 
 #flask financeAdvice route for GET methods
 
