@@ -76,6 +76,13 @@ def authenticate_pull_request(user_token):
 	else:
 		#Returns exit code 0 if unable to authenticate request
 		return 402
-		
+#Takes an authorization token and returns the user id for that token
+def get_user_id(user_token):
+	if (auth.verify_id_token(user_token)):
+		decoded_token = auth.verify_id_token(user_token)
+		uid = decoded_token['uid']
+		return uid
+	else:
+		return 402
 if __name__ == "__main__":
   app.run(debug=True)
