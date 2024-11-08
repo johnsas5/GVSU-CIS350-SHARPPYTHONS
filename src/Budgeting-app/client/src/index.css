@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  overflow: hidden;
 }
 
 header {
@@ -228,7 +229,7 @@ header {
 .form {
   margin: auto;
   margin-top: 100px;
-  height: 570px;
+  height: 5000px;
   width: 400px;
   background-color: white;
   text-align: center;
@@ -237,6 +238,13 @@ header {
   background-color: rgb(152, 41, 41);
   color: white;
   opacity: 0.9;
+  overflow-y: auto;
+  position: relative;
+  max-height: 70vh;
+}
+
+.form::-webkit-scrollbar {
+  display: none;
 }
 
 .formbackground {
@@ -251,6 +259,8 @@ header {
   background-repeat: no-repeat;
   filter: blur(7px);
   z-index: -1;
+  overflow: hidden;
+  background-attachment: fixed;
 }
 
 .prefname {
@@ -301,6 +311,11 @@ header {
   width: 300px;
 }
 
+.breakdown {
+  text-align: left;
+  margin-left: 42px;
+}
+
 .pinfo {
   text-align: left;
   margin-left: 42px;
@@ -316,6 +331,125 @@ header {
 }
 
 .retage {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.housing {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  width: 300px;
+}
+
+.utilities {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.transportation {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.food {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.debtrepayment {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.insurance {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.health {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.entertainment {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.education {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.investments {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.family {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.other {
   padding: 10px;
   text-align: left;
   border-radius: 5px;
@@ -362,7 +496,8 @@ header {
   border-top-color: black;
   display: none;
   animation: spin 1s infinite linear;
-  margin-left: 25px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @keyframes spin {
@@ -382,3 +517,160 @@ header {
 .loading .submitform:hover {
   background-color: white;
 }
+
+.asumBackground {
+  position: absolute;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-size: cover;
+  background: url('https://cdn.pixabay.com/photo/2017/08/07/10/22/buildings-2602324_1280.jpg') no-repeat center center/cover;
+  /* Placeholder for background image */
+  background-repeat: no-repeat;
+  filter: blur(7px);
+  z-index: -1;
+  overflow: hidden;
+  background-attachment: fixed;
+}
+
+.accountSummary {
+  margin: left;
+  margin-top: 150px;
+  margin-left: 100px;
+  height: 500px;
+  width: 400px;
+  background-color: white;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgb(152, 41, 41);
+  color: white;
+  opacity: 0.9;
+  overflow-y: auto;
+  position: relative;
+  max-height: 70vh;
+  border: 5px solid white;
+}
+
+.aholdername {
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+.balance {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.twoc {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.graphcontainer {
+  height: 500px;
+  width: 600px;
+  margin-left: 100px;
+  margin-top: 150px;
+  background-color: rgb(117, 117, 117);
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  opacity: 0.9;
+  max-height: 70vh;
+  border: 5px solid white;
+}
+
+.graphspace {
+  height: 415px;
+  width: 550px;
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 25px;
+}
+
+.graphText {
+  color: white;
+}
+
+.asumText {
+  color: white;
+}
+
+.agetextasum {
+  text-align: left;
+  margin-left: 10px;
+  color: white;
+}
+
+.dagetextasum {
+  text-align: left;
+  margin-left: 10px;
+  color: white;
+}
+
+.tmbd {
+  margin-top: 30px;
+}
+
+.tmbdcont {
+  background-color: white;
+  padding: 20px;
+  height: 130px;
+  width: 230px;
+  border-radius: 10px;
+  margin-left: 65px;
+  margin-top: 30px;
+}
+
+.updateForm {
+  background-color: rgb(152, 41, 41);
+  border: none;
+  font-size: 18px;
+  height: 34px;
+  width: 130px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.5s;
+  transition: color 0.3s;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.updateForm:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.updateForm:active {
+  opacity: 0.75;
+}
+
+.signout {
+  background-color: rgb(152, 41, 41);
+  border: none;
+  font-size: 18px;
+  height: 34px;
+  width: 110px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.5s;
+  transition: color 0.3s;
+}
+
+.signout:hover {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.signout:active {
+  opacity: 0.75;
+}
+
