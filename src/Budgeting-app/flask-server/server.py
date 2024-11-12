@@ -2,7 +2,7 @@ import json
 import firebase_admin
 from urllib import response
 from flask import Flask, make_response, request, jsonify
-from firebase_admin import db
+from firebase_admin import db, auth
 
 
 #I just worked around the boilerplate code that was already here,
@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 #saves a path to our service account key to authenticate the app
 #with the server
-service_account_key_path = "new_private_key/sharppythons-firebase-adminsdk-1yoay-807f2b4b03.json"
+service_account_key_path = "new_private_key/sharppythons-firebase-adminsdk-1yoay-b9b3bcc797.json"
 cred_obj = firebase_admin.credentials.Certificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL' : 'https://sharppythons-default-rtdb.firebaseio.com'
@@ -25,6 +25,9 @@ default_app = firebase_admin.initialize_app(cred_obj, {
 #Ref will reference the root directory of our database
 #"/user_data" will be used to hold our user data
 ref = db.reference("/")
+
+
+
 
 
 class User:
@@ -174,7 +177,15 @@ def GetFinancialData():
 	return response
   
   
-  
+@app.route('/test')
+def home_testing():
+	#My personal user id for testing purposes
+	sample_user_id = "euHbYv2SpcX3d46YMbdv49ryecd2"
+	#user = auth.get_user(sample_user_id)
+	user_token = auth.create_custom_token(sample_user_id)
+	user = User(user_token)
+	return "hi"
+
   
 
 #flask financialData route for POST method
