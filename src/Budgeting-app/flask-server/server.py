@@ -3,6 +3,7 @@ import firebase_admin
 from urllib import response
 from flask import Flask, make_response, request, jsonify
 from firebase_admin import db, auth
+from firebase_admin import credentials
 
 
 #I just worked around the boilerplate code that was already here,
@@ -10,13 +11,16 @@ from firebase_admin import db, auth
 #and am not sure what it is for at the moment.
 
 app = Flask(__name__)
-
+old = "gs://sharppythons.appspot.com"
+data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 #saves a path to our service account key to authenticate the app
 #with the server
-service_account_key_path = "new_private_key/sharppythons-firebase-adminsdk-1yoay-b9b3bcc797.json"
+service_account = {'serviceAccountId': 'firebase-adminsdk-1yoay@sharppythons.iam.gserviceaccount.com',}
+service_account_key_path = "new_private_key/sharppythons-firebase-adminsdk-1yoay-7811c20ced.json"
 cred_obj = firebase_admin.credentials.Certificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
-	'databaseURL' : 'https://sharppythons-default-rtdb.firebaseio.com'
+	'databaseURL' : data_path,
+	'serviceAccountId': 'firebase-adminsdk-1yoay@sharppythons.iam.gserviceaccount.com',
 	})
 
 
@@ -25,7 +29,8 @@ default_app = firebase_admin.initialize_app(cred_obj, {
 #Ref will reference the root directory of our database
 #"/user_data" will be used to hold our user data
 ref = db.reference("/")
-
+user_data_folder = ref.child("user_data")
+#admin_user_token = auth.verify_id_token(service_account['serviceAccountId'])
 
 
 
@@ -102,7 +107,8 @@ class User:
 			uid = decoded_token['uid']
 
 			#data will be saved under /user_data/uid for each user
-			ref = db.reference(f'/user_data/%s', uid)
+			user_ref = user_data_folder.child(f"{uid}")
+			
 
 			#Loads the user data JSON file
 			with open(user_data) as f:
@@ -110,7 +116,8 @@ class User:
 			#Saves the file under user_data/uid,
 			#Will overwrite anything that is already there, not sure
 			#if this will be an issue yet.
-			ref.set(file_contents)
+
+			user_ref.set(file_contents)
 			#Return exit code 200 if push was succesful
 			return "200"
 		else:
@@ -124,9 +131,9 @@ class User:
 			#Extracts user_id from token
 			uid = decoded_token['uid']
 			#Sets the reference point to user_data/user_id
-			ref = db.reference(f'/user_data/%s', uid)
+			user_ref = db.reference(f'/user_data/{uid}')
 			#Returns data stored under /user_data/user_id
-			return ref.get()
+			return user_ref.get()
 		else:
 			#Returns exit code 0 if unable to authenticate request
 			return "402"
@@ -176,15 +183,38 @@ def GetFinancialData():
 	response.headers['Content-Type'] = 'application/json'
 	return response
   
-  
+
+
+#Demonstrates the ability to add new users, and update their user information saved on the rt database
+#New users can be added successfully
+#New data for a user can be added by navigating to the folder matching the users uid, and using the set method
+#User data can be retrieved in the same way as setting new data, only with the get method instead.
 @app.route('/test')
-def home_testing():
+def testing():
 	#My personal user id for testing purposes
 	sample_user_id = "euHbYv2SpcX3d46YMbdv49ryecd2"
 	#user = auth.get_user(sample_user_id)
 	user_token = auth.create_custom_token(sample_user_id)
-	user = User(user_token)
-	return "hi"
+	user_ref = user_data_folder.child(sample_user_id)
+	user_data = {"Income" : 1000, "TotalExpense" : 800, 'Rent' : 800}
+	user_data = json.dumps(user_data)
+	
+	#Currently getting an error stating that there is an invalid JWT signature
+	#Error fixed by generating a new service account key and keeping it hidden, it will no longer work when I upload the code because that will
+	#Expose the new service account key. In the future we will have to make a new key every time we want to test the back end.
+	user_ref.set(user_data)
+				
+	user_data = user_ref.get()
+
+	#Testing adding a second user and storing their data
+	new_user_id = "WbkVAPKPCxWk2DUiDICb0B4SLiz2"
+	new_user_ref = user_data_folder.child(new_user_id)
+	new_user_data = {"Income" : 2500, "TotalExpense" : 1000, 'Rent' : 800, "Utilities" : 200}
+	new_user_data = json.dumps(new_user_data)
+
+	new_user_ref.set(new_user_data)
+	
+	return new_user_ref.get()
 
   
 
@@ -216,6 +246,29 @@ def PostFinancialData():
 	response.headers['Content-Type'] = 'application/json'
 	return response
 
+
+#Flask incomeSummary route for GET methods
+@app.route('/IncomeSummary', methods = ['GET'])
+def GetIncomeSummary():
+	#get firebase token id from header
+	id_token = request.headers.get('Authorization')
+	#verify firebase token still valid
+	#verify firebase token still valid
+	#If authorization fails, return exit code 402
+	if not id_token:
+		response = make_response("402")
+		return response
+	#Grabs just the user_token from the header
+	user_token = id_token.split('Bearer ')[-1]
+
+	#creates a user instance based on token from header
+	cur_user = User(user_token)
+
+	#calls the percent_of_total_expenses() method and saves the result
+	user_data = cur_user.percent_of_total_expenses()
+	#returns a json file with all the expenses listed as percentages
+	response = make_response(json.dumps(user_data))
+	#If the result is 0, there are no expenses stored
 
 #flask financeAdvice route for GET methods
 
