@@ -62,14 +62,27 @@ class User:
 		self.categories.append(self.family_expenses)
 		self.other = self.data['Other']
 		self.categories.append(self.other)
+		#Declares a variable to hold their monthly savings
+		self.savings = 0
+		#Calculates each expense as a percentage of their income
+		#Also calculates the savings variable
+		self.income_breakdown = self.percent_of_total_expenses()
+
+
+	
 
 	def percent_of_total_expenses(self):
-		result = []
+		expense_percentages = {}
+		income = self.income
+		savings = income
 		if self.expenses > 0:
-			for i in self.categories:
-				result.append(i)
-				return result
-			return 0
+			for name, amt in self.categories:
+				savings -= amt
+				amt = amt / income
+				expense_percentages[name] = amt
+			self.savings = savings
+			return expense_percentages
+		return 0
 		#Function to authenticate a push request to the server
 		#Takes the user_data as a json file path
 	def authenticate_push_request(self, user_data):
