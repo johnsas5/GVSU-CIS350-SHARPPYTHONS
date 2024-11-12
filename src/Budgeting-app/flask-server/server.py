@@ -109,10 +109,10 @@ class User:
 			#if this will be an issue yet.
 			ref.set(file_contents)
 			#Return exit code 200 if push was succesful
-			return 200
+			return "200"
 		else:
 			#Return exit code 0 if unable to authenticate request
-			return 402
+			return "402"
 	def authenticate_pull_request(self):
 		#Check to see if firebase can authenticate the token
 		if(auth.verify_id_token(self.user_token)):
@@ -126,7 +126,7 @@ class User:
 			return ref.get()
 		else:
 			#Returns exit code 0 if unable to authenticate request
-			return 402
+			return "402"
 #Takes an authorization token and returns the user id for that token
 	def get_user_id(self):
 		if (auth.verify_id_token(self.user_token)):
@@ -134,7 +134,7 @@ class User:
 			uid = decoded_token['uid']
 			return uid
 		else:
-			return 402
+			return "402"
 
 
 ###App Routes###
@@ -157,7 +157,8 @@ def GetFinancialData():
 	#verify firebase token still valid#verify firebase token still valid
 	#If authorization fails, return exit code 402
 	if not id_token:
-		return 402
+		response = make_response("402")
+		return response
 	#Grabs just the user_token from the header
 	user_token = id_token.split('Bearer ')[-1]
 
@@ -189,7 +190,8 @@ def PostFinancialData():
 	#verify firebase token still valid#verify firebase token still valid
 	#If authorization fails, return exit code 402
 	if not id_token:
-		return 402
+		response = make_response("402")
+		return response
 	#Grabs just the user_token from the header
 	user_token = id_token.split('Bearer ')[-1]
 
@@ -202,32 +204,33 @@ def PostFinancialData():
 	response = make_response(json.dumps(user_data))
 	response.headers['Content-Type'] = 'application/json'
 	return response
-  
-  
-  
+
 
 #flask financeAdvice route for GET methods
 
-@app.route('/FinanceAdvice', methods=['GET'])
-def GetFinancialAdvice():
-  #get firebase token id from header
-  #verify firebase token still valid
-  #formulate financial advice based on user dataw
-  #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
-	return Response
+# @app.route('/FinanceAdvice', methods=['GET'])
+# def GetFinancialAdvice():
+#   #get firebase token id from header
+#   #verify firebase token still valid
+#   #formulate financial advice based on user dataw
+#   #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
+# 	#return Response
+# 	return "0"
 
-#flask retirementData route for GET methods
+# #flask retirementData route for GET methods
 
-@app.route('/RetirementData', methods=['GET'])
-def GetRetirementData():
-  #get firebase token id from header
-  #verify firebase token still valid
-  #generate data for graph based on retirement calculation using current monthly savings data
-  #return data should be two arrays, one for years (2025, 2026... to retirement year), the other dollars
-  #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
-	return Response
+# @app.route('/RetirementData', methods=['GET'])
+# def GetRetirementData():
+#   #get firebase token id from header
+#   #verify firebase token still valid
+#   #generate data for graph based on retirement calculation using current monthly savings data
+#   #return data should be two arrays, one for years (2025, 2026... to retirement year), the other dollars
+#   #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
+# 	#return Response
+# 	return "0"
 
 
 
 if __name__ == "__main__":
-  app.run(debug=True)
+	app.run(debug=True)
+	
