@@ -18,3 +18,5 @@ export const UserData = {
   familyExpenses: 0,
   other: 0,
 }
+
+export default UserData;

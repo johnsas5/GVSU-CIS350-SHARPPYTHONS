@@ -3,11 +3,10 @@ import { GetUserData } from '../UserDataRequests';
 import { useEffect, useState } from 'react';
 import RetirementGraph from './RetirementGraph';
 import SavingsGraph from './SavingsGraph';
-import "../App.css";
-import "../index.css";
+import { UserData } from '../types';
 
 function Summary() {
-  const [userData, setUserData] = useState(new userData());
+  const [userData, setUserData] = useState(new UserData());
 
   useEffect(() => {
     const data = GetUserData();

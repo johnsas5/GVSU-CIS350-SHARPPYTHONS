@@ -4,8 +4,6 @@ import axios from 'axios';
 import { getAuth } from 'firebase/auth';
 import { useNavigate } from "react-router-dom"
 import { UserData } from '../types'
-import "../App.css";
-import "../index.css";
 
 
 function FinancialData() {
