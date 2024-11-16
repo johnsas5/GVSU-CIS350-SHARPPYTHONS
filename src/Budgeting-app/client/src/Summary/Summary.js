@@ -15,6 +15,7 @@ function Summary() {
     }
     else {
       setUserData(data);
+      console.log(userData);
     }
   }, []);
 
