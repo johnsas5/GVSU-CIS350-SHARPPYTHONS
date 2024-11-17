@@ -574,7 +574,8 @@ header {
 .graphcontainer {
   height: 500px;
   width: 600px;
-  margin-left: 100px;
+  margin-left: 25px;
+  margin-right: 25px;
   margin-top: 150px;
   background-color: rgb(117, 117, 117);
   text-align: center;
@@ -592,6 +593,7 @@ header {
   background-color: white;
   border-radius: 10px;
   margin-left: 25px;
+  margin-right: 25px;
 }
 
 .graphText {
