@@ -4,18 +4,18 @@ import { useEffect, useRef } from "react";
 
 function SavingsGraph() {
   const data = [
-    { name: "housing", value: 50 },
-    { name: "utilities", value: 25 },
-    { name: "transportation", value: 150 },
-    { name: "food", value: 300 },
-    { name: "debt", value: 200 },
-    { name: "insurance", value: 190 },
-    { name: "health", value: 70 },
-    { name: "entertainment", value: 225 },
-    { name: "education", value: 125 },
-    { name: "investments", value: 322 },
-    { name: "familyExpenses", value: 100 },
-    { name: "other", value: 0 },
+    { name: "Housing", value: 50 },
+    { name: "Utilities", value: 25 },
+    { name: "Transportation", value: 150 },
+    { name: "Food", value: 300 },
+    { name: "Debt", value: 200 },
+    { name: "Insurance", value: 190 },
+    { name: "Health", value: 70 },
+    { name: "Entertainment", value: 225 },
+    { name: "Education", value: 125 },
+    { name: "Investments", value: 322 },
+    { name: "FamilyExpenses", value: 100 },
+    { name: "Other", value: 0 },
   ];
 
   const margin = { top: 0, right: 100, bottom: 80, left: 100 };
@@ -56,12 +56,11 @@ function SavingsGraph() {
     svg
       .append("g")
       .attr("class", "x-axis")
-      .attr("transform", `translate(20,${height + 10})`)
+      .attr("transform", `translate(30,${height + 10})`)
       .call(xAxis)
       .selectAll("text")
       .attr("text-anchor", "end")
-      .attr("transform", "rotate(-45)")
-      .attr("fill", "#000");
+      .attr("transform", "translate(-10,0)rotate(-45)");
 
     // Create y-axis
     const yAxis = d3.axisLeft(yScale);
@@ -69,9 +68,7 @@ function SavingsGraph() {
       .append("g")
       .attr("class", "y-axis")
       .attr("transform", "translate(30, 10)")
-      .call(yAxis)
-      .selectAll("text")
-      .attr("fill", "#000");
+      .call(yAxis);
 
   }, [data, height, width]);
 
