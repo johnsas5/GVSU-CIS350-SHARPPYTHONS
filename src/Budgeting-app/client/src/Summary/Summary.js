@@ -1,7 +1,7 @@
 import React from 'react';
 //import { GetUserData } from '../UserDataRequests';
 //import { useEffect, useState } from 'react';
-//import RetirementGraph from './RetirementGraph';
+import RetirementGraph from './RetirementGraph';
 import SavingsGraph from './SavingsGraph';
 //import { UserData } from '../types';
 
@@ -41,7 +41,7 @@ function Summary() {
         <div className="graphcontainer">
           <h2 className="graphText">Retirement Graph</h2>
           <div className="graphspace">
-            {/* <RetirementGraph /> */}
+            <RetirementGraph />
           </div>
         </div>
       </div>
