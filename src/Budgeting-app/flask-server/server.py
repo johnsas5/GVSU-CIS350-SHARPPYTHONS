@@ -43,7 +43,9 @@ class User:
 		self.data = self.authenticate_pull_request()
 		self.categories = []
 		
-		self.income = self.data['TotalMonthlyIncome']
+		self.first_name = self.data['FirstName']
+        self.last_name = self.data['LastName']
+        self.income = self.data['TotalMonthlyIncome']
 		self.categories.append(self.income)
 		self.age = self.data['Age']
 		self.categories.append(self.age)
