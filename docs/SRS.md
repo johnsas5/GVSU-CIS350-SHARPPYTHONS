@@ -46,3 +46,5 @@ functional and nonfunctional requirements for each feature.
 7. **Financial Form**
 	1. *Upon pressing the submit button, the input form shall send its data to the server within 5 seconds*
 	2. *The input fields should only accept numbers and no other characters to prevent malicious code attacks*
+    3. *The Financial Form shall be intiutive so that the user understands what they need to fill out*
+    4. *Upon resizing the screen the form will be correctly updated to the new dimensions*
