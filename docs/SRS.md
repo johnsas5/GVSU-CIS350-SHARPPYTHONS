@@ -32,6 +32,9 @@ functional and nonfunctional requirements for each feature.
           - *Passwords must have at least one uppercase letter*
           - *Passwords must have at least one special character: [!,@,#,$,%,^,&,*,(,),_,-]*
           - *Passwords must have be at least 10 characters long.*
+    2. *The signup form shall encrypt the data before sending it to firebase*
+          - *Passwords must be encrypted before sent to firebase*
+          - *Usernames must be encrypted before sent to firebase*
 4. **Projected Savings Tool**
     1. *Any visual aids such as graphs or pie charts must be accessible to users with colorblindness*
 5. **Retirement Tool**
