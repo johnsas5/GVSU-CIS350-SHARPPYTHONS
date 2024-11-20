@@ -4,6 +4,7 @@ from urllib import response
 from flask import Flask, make_response, request, jsonify
 from firebase_admin import db, auth
 from firebase_admin import credentials
+import datetime
 
 
 #I just worked around the boilerplate code that was already here,
@@ -41,6 +42,7 @@ class User:
 		self.user_token = user_token
 		self.data = self.authenticate_pull_request()
 		self.categories = []
+		
 		self.income = self.data['TotalMonthlyIncome']
 		self.categories.append(self.income)
 		self.age = self.data['Age']
@@ -72,6 +74,8 @@ class User:
 		self.categories.append(self.other)
 		#Declares a variable to hold their monthly savings
 		self.savings = 0
+		#Saves their retirement year goal
+		self.retirement_year = self.data['Retirement Year']
 		#Calculates each expense as a percentage of their income
 		#Also calculates the savings variable
 		self.income_breakdown = self.percent_of_total_expenses()
@@ -91,8 +95,54 @@ class User:
 			self.savings = savings
 			return expense_percentages
 		return 0
+	
+	def retirement_projection(self):
+		current_year = int(datetime.datetime.now().year)
+		yearly_savings = self.savings * 12
+		compound_savings = self.savings
+		projection = {}
+		while current_year <= self.retirement_year:
+			compound_savings += yearly_savings
+			projection.update({current_year : compound_savings})
+			current_year += 1
+		return projection
+		
+
+
 		#Function to authenticate a push request to the server
 		#Takes the user_data as a json file path
+	def authenticate_update_request(self, user_data):
+		#Authenticates user_token passed from web app
+
+		#if firebase_admin can authenticate the token with no errors,
+		#auth.verify_id_token(user_token) should hold a value, if not
+		#firebase_admin failed to authenticate that token
+		if (auth.verify_id_token(self.user_token)):
+			#saves the authenticated user_token
+			decoded_token = auth.verify_id_token(self.user_token)
+
+			#extracts the user id from the self.user_token
+			uid = decoded_token['uid']
+
+			#data will be saved under /user_data/uid for each user
+			user_ref = user_data_folder.child(f"{uid}")
+			
+
+			#Loads the user data JSON file
+			with open(user_data) as f:
+				file_contents = json.load(f)
+			#Saves the file under user_data/uid,
+			#Will overwrite anything that is already there, not sure
+			#if this will be an issue yet.
+
+			user_ref.update(file_contents)
+			#Return exit code 200 if push was succesful
+			return "200"
+		else:
+			#Return exit code 0 if unable to authenticate request
+			return "402"
+
+
 	def authenticate_push_request(self, user_data):
 		#Authenticates user_token passed from web app
 
@@ -270,6 +320,23 @@ def GetIncomeSummary():
 	response = make_response(json.dumps(user_data))
 	#If the result is 0, there are no expenses stored
 
+@app.route('/updateFinancialData', methods=['POST'])
+def UpdateFinacialData():
+	id_token = request.headers.get("Authorization")
+	data_token = request.headers.get('Data')
+	data = data_token.slice('Data ')[-1]
+	if not id_token:
+		response = make_response("402")
+		return response
+	
+	user_token = id_token.split('Bearer ')[-1]
+	cur_user = User(user_token)
+	cur_user.authenticate_update_request(data)
+	response = make_response('200')
+	return response
+
+
+
 #flask financeAdvice route for GET methods
 
 # @app.route('/FinanceAdvice', methods=['GET'])
@@ -281,17 +348,31 @@ def GetIncomeSummary():
 # 	#return Response
 # 	return "0"
 
-# #flask retirementData route for GET methods
 
-# @app.route('/RetirementData', methods=['GET'])
-# def GetRetirementData():
-#   #get firebase token id from header
-#   #verify firebase token still valid
-#   #generate data for graph based on retirement calculation using current monthly savings data
-#   #return data should be two arrays, one for years (2025, 2026... to retirement year), the other dollars
-#   #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
-# 	#return Response
-# 	return "0"
+#flask retirementData route for GET methods
+
+@app.route('/RetirementData', methods=['GET'])
+def GetRetirementData():
+	id_token = request.headers.get("Authorization")
+	if not id_token:
+		response = make_response("402")
+		return response
+	
+	user_token = id_token.split('Bearer ')[-1]
+	cur_user = User(user_token)
+	#Returns a json file with the year as the key and the savings amount as the value 
+	#has a key value pair for each year from the current year up until their goal retirement year
+	projections = cur_user.retirement_projection()
+	response = make_response(json.dumps(projections))
+	response.headers['Content-Type'] = 'application/json'
+	return response
+  #get firebase token id from header
+  #verify firebase token still valid
+  #generate data for graph based on retirement calculation using current monthly savings data
+  #return data should be two arrays, one for years (2025, 2026... to retirement year), the other dollars
+  #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
+	#return Response
+	
 
 
 
