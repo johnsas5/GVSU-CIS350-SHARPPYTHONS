@@ -39,6 +39,8 @@ functional and nonfunctional requirements for each feature.
     1. *Any visual aids such as graphs or pie charts must be accessible to users with colorblindness*
 5. **Retirement Tool**
      1. *The retirement tool should be tailored based on a user's age. For example, younger users will be giving more aggresive savings targets, while older users may get less agressive savings targets.*
+     2. *The retirement graph will have alternative text that is screen reader compatible*
+     3. *The graph line color will contrast the background so users with minor visual impairments can determine the direction of the graph*
 6. **Help Page**
 	1. *The help page shall be displayed in a simple and intuitive manner*
 	2. *The help page text shall have a readable font*
