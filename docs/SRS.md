@@ -35,17 +35,17 @@ functional and nonfunctional requirements for each feature.
     2. *The signup form shall encrypt the data before sending it to firebase*
           - *Passwords must be encrypted before sent to firebase*
           - *Usernames must be encrypted before sent to firebase*
-4. **Projected Savings Tool**
+3. **Projected Savings Tool**
     1. *Any visual aids such as graphs or pie charts must be accessible to users with colorblindness*
-5. **Retirement Tool**
+4. **Retirement Tool**
      1. *The retirement tool should be tailored based on a user's age. For example, younger users will be giving more aggresive savings targets, while older users may get less agressive savings targets.*
      2. *The retirement graph will have alternative text that is screen reader compatible*
      3. *The graph line color will contrast the background so users with minor visual impairments can determine the direction of the graph*
-6. **Help Page**
+5. **Help Page**
 	1. *The help page shall be displayed in a simple and intuitive manner*
 	2. *The help page text shall have a readable font*
 	3. *The help page text shall be at least 10px*
-7. **Financial Form**
+6. **Financial Form**
 	1. *Upon pressing the submit button, the input form shall send its data to the server within 5 seconds*
 	2. *The input fields should only accept numbers and no other characters to prevent malicious code attacks*
     3. *The Financial Form shall be intiutive so that the user understands what they need to fill out*
