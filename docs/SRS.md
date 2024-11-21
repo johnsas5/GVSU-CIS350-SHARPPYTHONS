@@ -29,12 +29,12 @@ functional and nonfunctional requirements for each feature.
     1. *It should take no more than 60 seconds for a user to login to their profile*
 2. **Signup Form**
      1. *The signup form will enforce some parameters for user generated passwords:*
-          - *Passwords must have at least one uppercase letter*
-          - *Passwords must have at least one special character: [!,@,#,$,%,^,&,*,(,),_,-]*
-          - *Passwords must have be at least 10 characters long.*
-    2. *The signup form shall encrypt the data before sending it to firebase*
-          - *Passwords must be encrypted before sent to firebase*
-          - *Usernames must be encrypted before sent to firebase*
+     2. *Passwords must have at least one uppercase letter*
+     3. *Passwords must have at least one special character: [!,@,#,$,%,^,&,*,(,),_,-]*
+     4. *Passwords must have be at least 10 characters long.*
+     5. *The signup form shall encrypt the data before sending it to firebase*
+     6. *Passwords must be encrypted before sent to firebase*
+     7. *Usernames must be encrypted before sent to firebase*
 3. **Projected Savings Tool**
     1. *Any visual aids such as graphs or pie charts must be accessible to users with colorblindness*
 4. **Retirement Tool**
