@@ -1,5 +1,5 @@
 1. Open your linux console and navigate to /flask-server folder
-2. Check python installation, ensure it is python3
+2. Check python installation, ensure it is python3 version 3.10.12
 3. Ensure that you have 'pip' installed.
 4. install firebase with 'pip install firebase'
 5. install firebase admin with 'pip install firebase_admin"
