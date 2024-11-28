@@ -43,7 +43,9 @@ class User:
 		self.data = self.authenticate_pull_request()
 		self.categories = []
 		
-		self.income = self.data['TotalMonthlyIncome']
+		self.first_name = self.data['FirstName']
+        self.last_name = self.data['LastName']
+        self.income = self.data['TotalMonthlyIncome']
 		self.categories.append(self.income)
 		self.age = self.data['Age']
 		self.categories.append(self.age)
@@ -76,6 +78,8 @@ class User:
 		self.savings = 0
 		#Saves their retirement year goal
 		self.retirement_year = self.data['Retirement Year']
+		#Saves their current savings amount for retirement calculations
+		self.cur_savings = self.data['Current Savings']
 		#Calculates each expense as a percentage of their income
 		#Also calculates the savings variable
 		self.income_breakdown = self.percent_of_total_expenses()
@@ -99,7 +103,7 @@ class User:
 	def retirement_projection(self):
 		current_year = int(datetime.datetime.now().year)
 		yearly_savings = self.savings * 12
-		compound_savings = self.savings
+		compound_savings = self.cur_savings
 		projection = {}
 		while current_year <= self.retirement_year:
 			compound_savings += yearly_savings
@@ -343,7 +347,20 @@ def UpdateFinacialData():
 # def GetFinancialAdvice():
 #   #get firebase token id from header
 #   #verify firebase token still valid
-#   #formulate financial advice based on user dataw
+#   #formulate financial advice based on user data
+
+#Check their age, if they are 25 years old or younger, case1, if not, case2
+
+#case1:
+#verify that they have monthly savings, if it is less than 20% of their monthly income, encourage them to save more
+#Check their expenses list, and determine the top 3 largest spending categories, then suggest the user reduce them
+#Else Inform them that their savings goals have been met
+
+#case2: verify that they have monthly savings, if it is less than 10% of their monthly income, encourage them to save more
+#Check their expenses list, and determine the top 3 largest spending categories, then suggest the user reduce them
+#Else inform them that their savings goals have been met.
+
+
 #   #return flask response object: set data and response status code (can create response object yourself of use jsonify function)
 # 	#return Response
 # 	return "0"
