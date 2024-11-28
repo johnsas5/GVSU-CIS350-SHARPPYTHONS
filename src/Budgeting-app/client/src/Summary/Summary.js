@@ -1,24 +1,27 @@
-import React from 'react';
-//import { GetUserData } from '../UserDataRequests';
-//import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { GetUserData } from '../UserDataRequests';
 import RetirementGraph from './RetirementGraph';
 import SavingsGraph from './SavingsGraph';
-//import { UserData } from '../types';
+//import { useAuthValue } from '../AuthContext';
+
 
 function Summary() {
-  //const [userData, setUserData] = useState(new UserData());
+  //const {currentUser} = useAuthValue()
+  const {data, setData} = useState(null);
 
-  // useEffect(() => {
-  //   const data = GetUserData();
-  //   if (data != null) {
-  //     return (<h1>No user data retreived</h1>)
-  //   }
-  //   else {
-  //     setUserData(data);
-  //     console.log(userData);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const userData = GetUserData();
+    if (userData !== null) {
+      setData(userData);
+    }
+    else {
+      console.log("no user data retrieved");
+    }
+  }, []);
 
+  if (data === null) {
+    return (<h1>No user data retreived</h1>)
+  }
   return (
     <div>
       <div className="asumBackground"></div>

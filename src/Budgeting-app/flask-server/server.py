@@ -2,6 +2,7 @@ import json
 import firebase_admin
 from urllib import response
 from flask import Flask, make_response, request, jsonify
+from flask_cors import CORS
 from firebase_admin import db, auth
 from firebase_admin import credentials
 import datetime
@@ -12,6 +13,8 @@ import datetime
 #and am not sure what it is for at the moment.
 
 app = Flask(__name__)
+#enable cors for whole app
+CORS(app)
 old = "gs://sharppythons.appspot.com"
 data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 #saves a path to our service account key to authenticate the app
@@ -43,7 +46,9 @@ class User:
 		self.data = self.authenticate_pull_request()
 		self.categories = []
 		
-		self.income = self.data['TotalMonthlyIncome']
+		self.first_name = self.data['FirstName']
+        self.last_name = self.data['LastName']
+        self.income = self.data['TotalMonthlyIncome']
 		self.categories.append(self.income)
 		self.age = self.data['Age']
 		self.categories.append(self.age)
