@@ -14,8 +14,8 @@ function Login({ isOpen, onClose }) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log("user login 17: " + user);
         navigate("/FinancialData");
-        console.log(user);
         onClose();
       })
       .catch((error) => {

@@ -1,11 +1,12 @@
-import { getAuth } from 'firebase/auth';
 import axios from 'axios';
 
-export function GetUserData() {
+export const GetUserData = (user) => {
   try {
+    console.log("user get request token: " + user.uid);
     axios.get("/FinancialData", {
       headers: { 
-        'Authorization': 'Bearer ' + getAuth().currentUser.idToken
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + user.uid
       }
     }).then( response => {
       if (response.status === 200){
@@ -19,4 +20,29 @@ export function GetUserData() {
     console.log(err);
     return null;
   };
+}
+
+export const PostUserData = (user, data) => {
+  try{
+    axios.post('/FinancialData', JSON.stringify(data), {
+      headers: { 
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + user.uid
+      }
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        console.log('Data Submitted', data);
+      } else {
+        console.log('Error Occured');
+      }
+      return response.status;
+    })
+    .catch((error) => {
+      console.error('Error posting user data: ', error);
+    });
+  } catch (err) {
+    console.log(err);
+    return 
+  }
 }
