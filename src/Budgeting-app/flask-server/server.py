@@ -2,7 +2,6 @@ import json
 import firebase_admin
 from urllib import response
 from flask import Flask, make_response, request, jsonify
-from flask_cors import CORS
 from firebase_admin import db, auth
 from firebase_admin import credentials
 import datetime
@@ -13,8 +12,6 @@ import datetime
 #and am not sure what it is for at the moment.
 
 app = Flask(__name__)
-#enable cors for whole app
-CORS(app)
 old = "gs://sharppythons.appspot.com"
 data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 #saves a path to our service account key to authenticate the app
@@ -46,9 +43,7 @@ class User:
 		self.data = self.authenticate_pull_request()
 		self.categories = []
 		
-		self.first_name = self.data['FirstName']
-        self.last_name = self.data['LastName']
-        self.income = self.data['TotalMonthlyIncome']
+		self.income = self.data['TotalMonthlyIncome']
 		self.categories.append(self.income)
 		self.age = self.data['Age']
 		self.categories.append(self.age)
@@ -328,6 +323,7 @@ def GetIncomeSummary():
 	user_data = cur_user.percent_of_total_expenses()
 	#returns a json file with all the expenses listed as percentages
 	response = make_response(json.dumps(user_data))
+	return response
 	#If the result is 0, there are no expenses stored
 
 @app.route('/updateFinancialData', methods=['POST'])
@@ -349,14 +345,100 @@ def UpdateFinacialData():
 
 #flask financeAdvice route for GET methods
 
-# @app.route('/FinanceAdvice', methods=['GET'])
-# def GetFinancialAdvice():
-#   #get firebase token id from header
-#   #verify firebase token still valid
+@app.route('/FinanceAdvice', methods=['GET'])
+def GetFinancialAdvice():
+   #get firebase token id from header
+	id_token = request.headers.get('Authorization')
+	#verify firebase token still valid
+	#verify firebase token still valid
+	#If authorization fails, return exit code 402
+	if not id_token:
+		response = make_response("402")
+		return response
+	#Grabs just the user_token from the header
+	user_token = id_token.split('Bearer ')[-1]
+
+	#creates a user instance based on token from header
+	user = User(user_token)
+	
 #   #formulate financial advice based on user data
 
 #Check their age, if they are 25 years old or younger, case1, if not, case2
+	#Case1
+	if user.age <= 25:
+		#If the user currently has monthly savings:
+		if user.savings > 0:
+			#if savings is less than 20% of their income, encourage them to save more
+			if user.savings < (0.20 * user.income):
+				#get top three expenses:
+				expenses = user.categories
+				#Gets highest expense
+				max1 = 0
+				max1Name = ''
+				for name, amt in expenses:
+					if amt >= max1:
+						max1 = amt
+						max1Name = name
+				expenses.pop(max1Name)
 
+				#Gets second highest:
+				max2 = 0
+				max2Name = ''
+				for name, amt in expenses:
+					if amt >= max2:
+						max2 = amt
+						max2Name = name
+
+				#Gets third highest:
+				max3 = 0
+				max3Name = ''
+				for name, amt in expenses:
+					if amt >= max3:
+						max3 = amt
+						max3Name = name
+
+				financial_advice = f'It appears you are currently not meeting your savings goals, is there any way you can
+				reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}'
+			else:
+				financial_advice = f'It appears that you are currently meeting your savings goals, great work!'	
+	#If user is older than 25, push less agressive saving:
+	else:
+	#if savings is less than 10% of their income, encourage them to save more
+		if user.savings < (0.10 * user.income):
+			#get top three expenses:
+			expenses = user.categories
+			#Gets highest expense
+			max1 = 0
+			max1Name = ''
+			for name, amt in expenses:
+				if amt >= max1:
+						max1 = amt
+						max1Name = name
+				expenses.pop(max1Name)
+
+				#Gets second highest:
+			max2 = 0
+			max2Name = ''
+			for name, amt in expenses:
+				if amt >= max2:
+					max2 = amt
+					max2Name = name
+
+				#Gets third highest:
+			max3 = 0
+			max3Name = ''
+			for name, amt in expenses:
+				if amt >= max3:
+					max3 = amt
+					max3Name = name
+
+			financial_advice = f'It appears you are currently not meeting your savings goals, is there any way you can
+			reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}'
+		else:
+			financial_advice = f'It appears that you are currently meeting your savings goals, great work!'
+	response = make_response(financial_advice)
+	return response
+		
 #case1:
 #verify that they have monthly savings, if it is less than 20% of their monthly income, encourage them to save more
 #Check their expenses list, and determine the top 3 largest spending categories, then suggest the user reduce them
