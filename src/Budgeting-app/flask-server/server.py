@@ -241,6 +241,9 @@ def GetFinancialData():
 #New users can be added successfully
 #New data for a user can be added by navigating to the folder matching the users uid, and using the set method
 #User data can be retrieved in the same way as setting new data, only with the get method instead.
+
+#Integration Testing:
+#Move to unit test file
 @app.route('/test')
 def testing():
 	#My personal user id for testing purposes
@@ -352,6 +355,7 @@ def UpdateFinacialData():
 #case1:
 #verify that they have monthly savings, if it is less than 20% of their monthly income, encourage them to save more
 #Check their expenses list, and determine the top 3 largest spending categories, then suggest the user reduce them
+
 #Else Inform them that their savings goals have been met
 
 #case2: verify that they have monthly savings, if it is less than 10% of their monthly income, encourage them to save more
