@@ -2,6 +2,7 @@ import json
 import firebase_admin
 from urllib import response
 from flask import Flask, make_response, request, jsonify
+from flask_cors import CORS
 from firebase_admin import db, auth
 from firebase_admin import credentials
 import datetime
@@ -12,6 +13,8 @@ import datetime
 #and am not sure what it is for at the moment.
 
 app = Flask(__name__)
+#enable cors for whole app
+CORS(app)
 old = "gs://sharppythons.appspot.com"
 data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 #saves a path to our service account key to authenticate the app
@@ -43,41 +46,41 @@ class User:
 		self.data = self.authenticate_pull_request()
 		self.categories = []
 		
-		self.income = self.data['TotalMonthlyIncome']
+		self.income = self.data['income']
 		self.categories.append(self.income)
-		self.age = self.data['Age']
+		self.age = self.data['age']
 		self.categories.append(self.age)
-		self.expenses = self.data['TotalMonthlyExpenses']
-		self.housing = self.data['Housing']
+		self.expenses = self.data['expenses']
+		self.housing = self.data['housing']
 		self.categories.append(self.housing)
-		self.utilities = self.data['Utilities']
+		self.utilities = self.data['utilities']
 		self.categories.append(self.utilities)
-		self.transportation = self.data['Transportation']
+		self.transportation = self.data['transportation']
 		self.categories.append(self.transportation)
-		self.food = self.data['Food']
+		self.food = self.data['food']
 		self.categories.append(self.food)
-		self.debt_repayment = self.data['Debt Repayment']
+		self.debt_repayment = self.data['debt_repayment']
 		self.categories.append(self.debt_repayment)
-		self.insurance = self.data['Insurance']
+		self.insurance = self.data['insurance']
 		self.categories.append(self.insurance)
-		self.health_and_wealth = self.data['Health and Wealth']
+		self.health_and_wealth = self.data['health_and_wealth']
 		self.categories.append(self.health_and_wealth)
-		self.entertainment = self.data['Entertainment']
+		self.entertainment = self.data['entertainment']
 		self.categories.append(self.entertainment)
-		self.education = self.data['Education']
+		self.education = self.data['education']
 		self.categories.append(self.education)
-		self.investments = self.data['Investments']
+		self.investments = self.data['investments']
 		self.categories.append(self.investments)
-		self.family_expenses = self.data['Family Expenses']
+		self.family_expenses = self.data['family_expenses']
 		self.categories.append(self.family_expenses)
-		self.other = self.data['Other']
+		self.other = self.data['other']
 		self.categories.append(self.other)
 		#Declares a variable to hold their monthly savings
 		self.savings = 0
 		#Saves their retirement year goal
-		self.retirement_year = self.data['Retirement Year']
+		self.retirement_year = self.data['retirement_year']
 		#Saves their current savings amount for retirement calculations
-		self.cur_savings = self.data['Current Savings']
+		self.cur_savings = self.data['cur_savings']
 		#Calculates each expense as a percentage of their income
 		#Also calculates the savings variable
 		self.income_breakdown = self.percent_of_total_expenses()
@@ -278,8 +281,12 @@ def testing():
 @app.route('/FinancialData', methods=['POST'])
 def PostFinancialData():
 	#Gets data file from header
+	print(request.json)
+	print(request.headers)
 	data_token = request.headers.get('Data')
+	print(data_token)
 	data = data_token.slice('Data ')[-1]
+	print(data)
   #get firebase token id from header
 	#Gets the id_token from the request header
 	id_token = request.headers.get('Authorization')
@@ -397,8 +404,7 @@ def GetFinancialAdvice():
 						max3 = amt
 						max3Name = name
 
-				financial_advice = f'It appears you are currently not meeting your savings goals, is there any way you can
-				reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}'
+				financial_advice = f'It appears you are currently not meeting your savings goals, is there any way you can reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}'
 			else:
 				financial_advice = f'It appears that you are currently meeting your savings goals, great work!'	
 	#If user is older than 25, push less agressive saving:
@@ -432,8 +438,7 @@ def GetFinancialAdvice():
 					max3 = amt
 					max3Name = name
 
-			financial_advice = f'It appears you are currently not meeting your savings goals, is there any way you can
-			reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}'
+			financial_advice = f"It appears you are currently not meeting your savings goals, is there any way you can reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}"
 		else:
 			financial_advice = f'It appears that you are currently meeting your savings goals, great work!'
 	response = make_response(financial_advice)
@@ -480,8 +485,5 @@ def GetRetirementData():
 	#return Response
 	
 
-
-
 if __name__ == "__main__":
 	app.run(debug=True)
-	

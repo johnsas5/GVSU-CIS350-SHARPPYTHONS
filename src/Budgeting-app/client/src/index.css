@@ -311,6 +311,16 @@ header {
   width: 300px;
 }
 
+.currsav {
+  padding: 10px;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  margin-top: 10px;
+  width: 300px;
+}
+
 .breakdown {
   text-align: left;
   margin-left: 42px;

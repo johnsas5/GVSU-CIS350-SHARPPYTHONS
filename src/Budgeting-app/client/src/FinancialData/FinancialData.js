@@ -88,10 +88,21 @@ function FinancialData() {
           <input
             className="monthex"
             type="number"
-            placeholder="Total Monthly Expenses"
-            id="monthlyExpenses"
+            placeholder="Total Monthly expenses"
+            id="totex"
             onChange={(v) =>
               setUserData({ ...userData, expenses: v.target.value })
+            }
+          />
+        </div>
+        <div>
+          <input
+            className="currsav"
+            type="number"
+            placeholder="Current Savings"
+            id="currentSavings"
+            onChange={(v) =>
+              setUserData({ ...userData, curr_savings: v.target.value })
             }
           />
         </div>
@@ -233,7 +244,7 @@ function FinancialData() {
             placeholder="Current Age"
             id="cage1"
             onChange={(v) =>
-              setUserData({ ...userData, currentAge: v.target.value })
+              setUserData({ ...userData, age: v.target.value })
             }
           />
         </div>
@@ -241,10 +252,10 @@ function FinancialData() {
           <input
             className="retage"
             type="number"
-            placeholder="Desired Retirement Age"
+            placeholder="Desired Retirement year"
             id="rage1"
             onChange={(v) =>
-              setUserData({ ...userData, retirementAge: v.target.value })
+              setUserData({ ...userData, retirement_year: v.target.value })
             }
           />
         </div>
