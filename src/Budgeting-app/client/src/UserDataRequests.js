@@ -53,3 +53,55 @@ export const PostUserData = (user, data) => {
     return;
   }
 }
+
+export const GetRetirementData = (user) => {
+  try {
+    user.getIdToken(true).then((idToken) => {
+      axios
+        .get("/RetirementData", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + idToken,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.data;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          return null;
+        });
+    });
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+export const GetFinanceAdvice = (user) => {
+  try {
+    user.getIdToken(true).then((idToken) => {
+      axios
+        .get("/FinanceAdvice", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + idToken,
+          },
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            return response.data;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          return null;
+        });
+    });
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};

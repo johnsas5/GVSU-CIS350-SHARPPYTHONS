@@ -1,29 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import { GetUserData } from '../UserDataRequests';
+import { GetUserData, GetFinanceAdvice, GetRetirementData } from '../UserDataRequests';
 import RetirementGraph from './RetirementGraph';
 import SavingsGraph from './SavingsGraph';
-//import { useAuthValue } from '../AuthContext';
-
+import { useAuthValue } from '../AuthContext';
+import { useNavigate } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
 
 function Summary() {
-  //const {currentUser} = useAuthValue()
+  const {currentUser} = useAuthValue()
   const {data, setData} = useState(null);
+  const [retirementData, setRetirementData] = useState(null);
+  const [financeAdvice, setFinanceAdvice] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const userData = GetUserData();
-    if (userData !== null) {
-      setData(userData);
-    }
-    else {
-      console.log("no user data retrieved");
+    try {
+      const userData = GetUserData(currentUser);
+      if (userData != null) {
+        setData(userData);
+      } else {
+        console.log("no user data retrieved");
+      }
+      const userRetireData = GetRetirementData(currentUser);
+      if (userRetireData != null) {
+        setRetirementData(userRetireData);
+      } else {
+        console.log("no retirement data retriieved");
+      }
+      const userAdvice = GetFinanceAdvice(currentUser);
+      if (userAdvice != null) {
+        setFinanceAdvice(userAdvice);
+      } else {
+        console.log("no finance advice retrieved");
+      }
+    } catch (err) {
+      console.log(err);
     }
   }, []);
+
+  const onClickSignOut = (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+      signOut(auth).then(() => {
+        navigate("/");
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+  const onClickFinancialData = (e) => {
+    e.preventDefault();
+    if (currentUser != null) {
+      navigate("/FinancialData");
+    }
+  }
 
   if (data === null) {
     return (<h1>No user data retreived</h1>)
   }
   return (
     <div>
+      <section>
+        <button onClick={onClickSignOut} className="navButtons">
+          Sign Out
+        </button>
+        <button onClick={onClickFinancialData} className="navButtons">
+          Change Finances
+        </button>
+      </section>
       <div className="asumBackground"></div>
       <div className="twoc">
         <div className="accountSummary">
@@ -33,7 +76,9 @@ function Summary() {
           <h4 className="agetextasum">Account Holder Age:</h4>
           <h4 className="dagetextasum">Desired Retirement Age:</h4>
           <h3 className="tmbd">This Month's Breakdown</h3>
-          <div className="tmbdcont"></div>
+          <div className="tmbdcont">
+            <p>{financeAdvice}</p>
+          </div>
         </div>
         <div className="graphcontainer">
           <h2 className="graphText">Savings Graph</h2>

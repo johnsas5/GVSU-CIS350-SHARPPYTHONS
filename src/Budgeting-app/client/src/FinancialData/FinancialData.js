@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GetUserData, PostUserData } from "../UserDataRequests";
 import { UserData } from "../types";
 import { useAuthValue } from "../AuthContext";
+import { getAuth, signOut } from "firebase/auth";
 
 function FinancialData() {
   const { currentUser } = useAuthValue();
@@ -19,14 +20,9 @@ function FinancialData() {
       else {
         console.log("user logged in");
       }
-      
-      console.log("user FD 22: " + JSON.stringify(currentUser));
+
       const data = GetUserData(currentUser);
-      if (data) {
-        navigate("/Summary");
-      } else {
-        setUserData(UserData);
-      }
+      setUserData(UserData);
     }
     catch (err) {
       console.log(err);
@@ -44,8 +40,32 @@ function FinancialData() {
     }
   };
 
+  const onClickSignOut = (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+      signOut(auth).then(() => {
+        navigate("/");
+      }).catch((error) => {
+        console.log(error);
+      });
+  }
+  const onClickSummary = (e) => {
+    e.preventDefault();
+    if (currentUser != null) {
+      navigate("/Summary");
+    }
+  }
+
   return (
     <div>
+      <section>
+        <button onClick={onClickSignOut} className="navButtons">
+          Sign Out
+        </button>
+        <button onClick={onClickSummary} className="navButtons">
+          Summary
+        </button>
+      </section>
       <div className="formbackground"></div>
       <div className="form" id="form">
         <h2 className="formheader">Financial Form</h2>
@@ -161,7 +181,7 @@ function FinancialData() {
         </div>
         <div>
           <input
-            className="insurnace"
+            className="insurance"
             type="number"
             placeholder="Insurance"
             id="insurance1"
