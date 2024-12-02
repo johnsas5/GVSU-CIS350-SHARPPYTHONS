@@ -20,7 +20,7 @@ data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 #saves a path to our service account key to authenticate the app
 #with the server
 service_account = {'serviceAccountId': 'firebase-adminsdk-1yoay@sharppythons.iam.gserviceaccount.com',}
-service_account_key_path = "new_private_key/sharppythons-firebase-adminsdk-1yoay-7811c20ced.json"
+service_account_key_path = "firebase_api_key/sharppythons-firebase-adminsdk-1yoay-f17a0eec84.json"
 cred_obj = firebase_admin.credentials.Certificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL' : data_path,
@@ -41,46 +41,44 @@ user_data_folder = ref.child("user_data")
 
 class User:
 
-	def __init__(self, user_token):
+	def __init__(self, user_token, user_data):
 		self.user_token = user_token
 		self.data = self.authenticate_pull_request()
-		self.categories = []
-		
-		self.income = self.data['income']
-		self.categories.append(self.income)
-		self.age = self.data['age']
-		self.categories.append(self.age)
-		self.expenses = self.data['expenses']
-		self.housing = self.data['housing']
-		self.categories.append(self.housing)
-		self.utilities = self.data['utilities']
-		self.categories.append(self.utilities)
-		self.transportation = self.data['transportation']
-		self.categories.append(self.transportation)
-		self.food = self.data['food']
-		self.categories.append(self.food)
-		self.debt_repayment = self.data['debt_repayment']
-		self.categories.append(self.debt_repayment)
-		self.insurance = self.data['insurance']
-		self.categories.append(self.insurance)
-		self.health_and_wealth = self.data['health_and_wealth']
-		self.categories.append(self.health_and_wealth)
-		self.entertainment = self.data['entertainment']
-		self.categories.append(self.entertainment)
-		self.education = self.data['education']
-		self.categories.append(self.education)
-		self.investments = self.data['investments']
-		self.categories.append(self.investments)
-		self.family_expenses = self.data['family_expenses']
-		self.categories.append(self.family_expenses)
-		self.other = self.data['other']
-		self.categories.append(self.other)
+		self.categories = {}
+		print("self data: ",user_data)
+		self.income = int(user_data['income'])
+		self.age = int(user_data['age'])
+		self.expenses = int(user_data['expenses'])
+		self.housing = int(user_data['housing'])
+		self.categories.update({"housing":self.housing})
+		self.utilities = int(user_data['utilities'])
+		self.categories.update({"utilities":self.utilities})
+		self.transportation = int(user_data['transportation'])
+		self.categories.update({"transportation":self.transportation})
+		self.food = int(user_data['food'])
+		self.categories.update({"food":self.food})
+		self.debt_repayment = int(user_data['debt_repayment'])
+		self.categories.update({"debt_repayment":self.debt_repayment})
+		self.insurance = int(user_data['insurance'])
+		self.categories.update({"insurance":self.insurance})
+		self.health_and_wealth = int(user_data['health_and_wealth'])
+		self.categories.update({"health_and_wealth":self.health_and_wealth})
+		self.entertainment = int(user_data['entertainment'])
+		self.categories.update({"entertainment":self.entertainment})
+		self.education = int(user_data['education'])
+		self.categories.update({"education":self.education})
+		self.investments = int(user_data['investments'])
+		self.categories.update({"investments":self.investments})
+		self.family_expenses = int(user_data['family_expenses'])
+		self.categories.update({"family_expenses":self.family_expenses})
+		self.other = int(user_data['other'])
+		self.categories.update({"other":self.other})
 		#Declares a variable to hold their monthly savings
 		self.savings = 0
 		#Saves their retirement year goal
-		self.retirement_year = self.data['retirement_year']
+		self.retirement_year = user_data['retirement_year']
 		#Saves their current savings amount for retirement calculations
-		self.cur_savings = self.data['cur_savings']
+		self.cur_savings = user_data['cur_savings']
 		#Calculates each expense as a percentage of their income
 		#Also calculates the savings variable
 		self.income_breakdown = self.percent_of_total_expenses()
@@ -92,8 +90,9 @@ class User:
 		expense_percentages = {}
 		income = self.income
 		savings = income
-		if self.expenses > 0:
-			for name, amt in self.categories:
+		print("self categories: ", self.categories)
+		if int(self.expenses) > 0:
+			for name, amt in self.categories.items():
 				savings -= amt
 				amt = amt / income
 				expense_percentages[name] = amt
@@ -281,12 +280,8 @@ def testing():
 @app.route('/FinancialData', methods=['POST'])
 def PostFinancialData():
 	#Gets data file from header
-	print(request.json)
-	print(request.headers)
-	data_token = request.headers.get('Data')
-	print(data_token)
-	data = data_token.slice('Data ')[-1]
-	print(data)
+	data_token = request.json
+	data = data_token
   #get firebase token id from header
 	#Gets the id_token from the request header
 	id_token = request.headers.get('Authorization')
@@ -299,7 +294,7 @@ def PostFinancialData():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#save data to firebase based on uid
-	cur_user = User(user_token)
+	cur_user = User(user_token, data)
 	user_data = cur_user.authenticate_push_request(data)
 	
 #return flask response object: set data and response status code 
@@ -382,7 +377,7 @@ def GetFinancialAdvice():
 				#Gets highest expense
 				max1 = 0
 				max1Name = ''
-				for name, amt in expenses:
+				for name, amt in expenses.items():
 					if amt >= max1:
 						max1 = amt
 						max1Name = name
@@ -391,7 +386,7 @@ def GetFinancialAdvice():
 				#Gets second highest:
 				max2 = 0
 				max2Name = ''
-				for name, amt in expenses:
+				for name, amt in expenses.items():
 					if amt >= max2:
 						max2 = amt
 						max2Name = name
@@ -399,7 +394,7 @@ def GetFinancialAdvice():
 				#Gets third highest:
 				max3 = 0
 				max3Name = ''
-				for name, amt in expenses:
+				for name, amt in expenses.items():
 					if amt >= max3:
 						max3 = amt
 						max3Name = name
@@ -416,7 +411,7 @@ def GetFinancialAdvice():
 			#Gets highest expense
 			max1 = 0
 			max1Name = ''
-			for name, amt in expenses:
+			for name, amt in expenses.items():
 				if amt >= max1:
 						max1 = amt
 						max1Name = name
@@ -425,7 +420,7 @@ def GetFinancialAdvice():
 				#Gets second highest:
 			max2 = 0
 			max2Name = ''
-			for name, amt in expenses:
+			for name, amt in expenses.items():
 				if amt >= max2:
 					max2 = amt
 					max2Name = name
@@ -433,7 +428,7 @@ def GetFinancialAdvice():
 				#Gets third highest:
 			max3 = 0
 			max3Name = ''
-			for name, amt in expenses:
+			for name, amt in expenses.items():
 				if amt >= max3:
 					max3 = amt
 					max3Name = name

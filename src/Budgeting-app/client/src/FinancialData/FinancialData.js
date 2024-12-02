@@ -102,7 +102,7 @@ function FinancialData() {
             placeholder="Current Savings"
             id="currentSavings"
             onChange={(v) =>
-              setUserData({ ...userData, curr_savings: v.target.value })
+              setUserData({ ...userData, cur_savings: v.target.value })
             }
           />
         </div>
