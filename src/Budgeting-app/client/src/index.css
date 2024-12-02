@@ -43,6 +43,20 @@ header {
   transition: color 0.3s;
 }
 
+.navButtons {
+  background-color: rgb(152, 41, 41);
+  border: none;
+  font-size: 18px;
+  margin-left: 10px;
+  height: 34px;
+  width: 200px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  color: white;
+  transition: color 0.3s;
+}
+
 .home {
   background-color: rgb(152, 41, 41);
   border: none;
