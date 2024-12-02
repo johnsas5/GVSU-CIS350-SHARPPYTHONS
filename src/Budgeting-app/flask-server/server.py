@@ -133,13 +133,14 @@ class User:
 			
 
 			#Loads the user data JSON file
-			with open(user_data) as f:
-				file_contents = json.load(f)
+			# with open(user_data) as f:
+			# 	file_contents = json.load(f)
 			#Saves the file under user_data/uid,
 			#Will overwrite anything that is already there, not sure
 			#if this will be an issue yet.
 
-			user_ref.update(file_contents)
+			#Updates the user's data with the new data passed from the front end, without overwriting previous data
+			user_ref.update(user_data)
 			#Return exit code 200 if push was succesful
 			return "200"
 		else:
@@ -165,13 +166,14 @@ class User:
 			
 
 			#Loads the user data JSON file
-			with open(user_data) as f:
-				file_contents = json.load(f)
+			# with open(user_data) as f:
+			# 	file_contents = json.load(f)
 			#Saves the file under user_data/uid,
 			#Will overwrite anything that is already there, not sure
 			#if this will be an issue yet.
 
-			user_ref.set(file_contents)
+			#Replaces the user's data with the data passed from the front end:
+			user_ref.set(user_data)
 			#Return exit code 200 if push was succesful
 			return "200"
 		else:
@@ -215,6 +217,8 @@ def members():
 
 @app.route('/FinancialData', methods=['GET'])
 def GetFinancialData():
+	#Gets any data from the header
+	data = request.json
 	#get firebase token id from header
 	#Gets the id_token from the request header
 	id_token = request.headers.get('Authorization')
@@ -227,7 +231,7 @@ def GetFinancialData():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#get data based on uid
-	cur_user = User(user_token)
+	cur_user = User(user_token, data)
 	user_data = cur_user.authenticate_pull_request()
 	
 #return flask response object: set data and response status code 
@@ -285,7 +289,7 @@ def PostFinancialData():
   #get firebase token id from header
 	#Gets the id_token from the request header
 	id_token = request.headers.get('Authorization')
-	#verify firebase token still valid#verify firebase token still valid
+	#verify firebase token still valid
 	#If authorization fails, return exit code 402
 	if not id_token:
 		response = make_response("402")
@@ -307,6 +311,9 @@ def PostFinancialData():
 #Flask incomeSummary route for GET methods
 @app.route('/IncomeSummary', methods = ['GET'])
 def GetIncomeSummary():
+	#getting data from header for user class:
+	data = request.json
+
 	#get firebase token id from header
 	id_token = request.headers.get('Authorization')
 	#verify firebase token still valid
@@ -319,7 +326,7 @@ def GetIncomeSummary():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#creates a user instance based on token from header
-	cur_user = User(user_token)
+	cur_user = User(user_token, data)
 
 	#calls the percent_of_total_expenses() method and saves the result
 	user_data = cur_user.percent_of_total_expenses()
@@ -349,6 +356,8 @@ def UpdateFinacialData():
 
 @app.route('/FinanceAdvice', methods=['GET'])
 def GetFinancialAdvice():
+	#Getting data from header
+	data = request.json
    #get firebase token id from header
 	id_token = request.headers.get('Authorization')
 	#verify firebase token still valid
@@ -361,7 +370,7 @@ def GetFinancialAdvice():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#creates a user instance based on token from header
-	user = User(user_token)
+	user = User(user_token, data)
 	
 #   #formulate financial advice based on user data
 
@@ -459,13 +468,15 @@ def GetFinancialAdvice():
 
 @app.route('/RetirementData', methods=['GET'])
 def GetRetirementData():
+	#Getting data from header
+	data = request.json
 	id_token = request.headers.get("Authorization")
 	if not id_token:
 		response = make_response("402")
 		return response
 	
 	user_token = id_token.split('Bearer ')[-1]
-	cur_user = User(user_token)
+	cur_user = User(user_token, data)
 	#Returns a json file with the year as the key and the savings amount as the value 
 	#has a key value pair for each year from the current year up until their goal retirement year
 	projections = cur_user.retirement_projection()
