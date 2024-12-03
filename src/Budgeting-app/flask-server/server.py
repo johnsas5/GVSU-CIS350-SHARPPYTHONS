@@ -41,9 +41,11 @@ user_data_folder = ref.child("user_data")
 
 class User:
 
-	def __init__(self, user_token, user_data):
+	def __init__(self, user_token):
 		self.user_token = user_token
+		#Pulls current data from the server, and fills variables
 		self.data = self.authenticate_pull_request()
+		user_data = self.data
 		self.categories = {}
 		print("self data: ",user_data)
 		self.income = int(user_data['income'])
@@ -218,7 +220,7 @@ def members():
 @app.route('/FinancialData', methods=['GET'])
 def GetFinancialData():
 	#Gets any data from the header
-	data = request.json
+	# data = request.json
 	#get firebase token id from header
 	#Gets the id_token from the request header
 	id_token = request.headers.get('Authorization')
@@ -231,7 +233,8 @@ def GetFinancialData():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#get data based on uid
-	cur_user = User(user_token, data)
+	cur_user = User(user_token)
+	#gets the data currently stored on the firebase database
 	user_data = cur_user.authenticate_pull_request()
 	
 #return flask response object: set data and response status code 
@@ -297,8 +300,8 @@ def PostFinancialData():
 	#Grabs just the user_token from the header
 	user_token = id_token.split('Bearer ')[-1]
 
-	#save data to firebase based on uid
-	cur_user = User(user_token, data)
+	#save data to firebase based on uid, this is for initial population only
+	cur_user = User(user_token)
 	user_data = cur_user.authenticate_push_request(data)
 	
 #return flask response object: set data and response status code 
@@ -326,7 +329,7 @@ def GetIncomeSummary():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#creates a user instance based on token from header
-	cur_user = User(user_token, data)
+	cur_user = User(user_token)
 
 	#calls the percent_of_total_expenses() method and saves the result
 	user_data = cur_user.percent_of_total_expenses()
@@ -338,8 +341,12 @@ def GetIncomeSummary():
 @app.route('/updateFinancialData', methods=['POST'])
 def UpdateFinacialData():
 	id_token = request.headers.get("Authorization")
-	data_token = request.headers.get('Data')
-	data = data_token.slice('Data ')[-1]
+	#Outdated method:
+	# data_token = request.headers.get('Data')
+	# data = data_token.slice('Data ')[-1]
+
+	#Pulls data from request
+	data = request.json
 	if not id_token:
 		response = make_response("402")
 		return response
@@ -357,10 +364,9 @@ def UpdateFinacialData():
 @app.route('/FinanceAdvice', methods=['GET'])
 def GetFinancialAdvice():
 	#Getting data from header
-	data = request.json
+	#data = request.json
    #get firebase token id from header
 	id_token = request.headers.get('Authorization')
-	#verify firebase token still valid
 	#verify firebase token still valid
 	#If authorization fails, return exit code 402
 	if not id_token:
@@ -370,7 +376,7 @@ def GetFinancialAdvice():
 	user_token = id_token.split('Bearer ')[-1]
 
 	#creates a user instance based on token from header
-	user = User(user_token, data)
+	user = User(user_token)
 	
 #   #formulate financial advice based on user data
 
@@ -469,14 +475,14 @@ def GetFinancialAdvice():
 @app.route('/RetirementData', methods=['GET'])
 def GetRetirementData():
 	#Getting data from header
-	data = request.json
+	#data = request.json
 	id_token = request.headers.get("Authorization")
 	if not id_token:
 		response = make_response("402")
 		return response
 	
 	user_token = id_token.split('Bearer ')[-1]
-	cur_user = User(user_token, data)
+	cur_user = User(user_token)
 	#Returns a json file with the year as the key and the savings amount as the value 
 	#has a key value pair for each year from the current year up until their goal retirement year
 	projections = cur_user.retirement_projection()
