@@ -18,8 +18,9 @@ CORS(app)
 old = "gs://sharppythons.appspot.com"
 data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 #saves a path to our service account key to authenticate the app
-#with the server
+
 service_account = {'serviceAccountId': 'firebase-adminsdk-1yoay@sharppythons.iam.gserviceaccount.com',}
+#service_account_key_path = "firebase_api_key/sharppythons-firebase-adminsdk-1yoay-f17a0eec84.json"
 service_account_key_path = "firebase_api_key/sharppythons-firebase-adminsdk-1yoay-f17a0eec84.json"
 cred_obj = firebase_admin.credentials.Certificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
@@ -253,15 +254,15 @@ def GetFinancialData():
 
 #Integration Testing:
 #Move to unit test file
-@app.route('/test')
+@app.route('/test', methods=['GET'])
 def testing():
 	#My personal user id for testing purposes
 	sample_user_id = "euHbYv2SpcX3d46YMbdv49ryecd2"
 	#user = auth.get_user(sample_user_id)
 	user_token = auth.create_custom_token(sample_user_id)
 	user_ref = user_data_folder.child(sample_user_id)
-	user_data = {"Income" : 1000, "TotalExpense" : 800, 'Rent' : 800}
-	user_data = json.dumps(user_data)
+	user_data = {"Income" : 4000, "TotalExpense" : 800, 'Rent' : 800}
+	#user_data = json.dumps(user_data)
 	
 	#Currently getting an error stating that there is an invalid JWT signature
 	#Error fixed by generating a new service account key and keeping it hidden, it will no longer work when I upload the code because that will
@@ -271,14 +272,14 @@ def testing():
 	user_data = user_ref.get()
 
 	#Testing adding a second user and storing their data
-	new_user_id = "WbkVAPKPCxWk2DUiDICb0B4SLiz2"
-	new_user_ref = user_data_folder.child(new_user_id)
-	new_user_data = {"Income" : 2500, "TotalExpense" : 1000, 'Rent' : 800, "Utilities" : 200}
-	new_user_data = json.dumps(new_user_data)
+	# new_user_id = "WbkVAPKPCxWk2DUiDICb0B4SLiz2"
+	# new_user_ref = user_data_folder.child(new_user_id)
+	# new_user_data = {"Income" : 2500, "TotalExpense" : 1000, 'Rent' : 800, "Utilities" : 200}
+	# #new_user_data = json.dumps(new_user_data)
 
-	new_user_ref.set(new_user_data)
+	# new_user_ref.set(new_user_data)
 	
-	return new_user_ref.get()
+	return user_data
 
   
 
