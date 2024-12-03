@@ -22,7 +22,7 @@ function FinancialData() {
       }
 
       const data = GetUserData(currentUser);
-      setUserData(UserData);
+      setUserData(data);
     }
     catch (err) {
       console.log(err);
@@ -76,6 +76,7 @@ function FinancialData() {
             type="text"
             placeholder="First Name"
             id="firstname1"
+            value={(userData != null) ? userData.firstName : ""}
             onChange={(v) =>
               setUserData({ ...userData, firstName: v.target.value })
             }
@@ -87,6 +88,7 @@ function FinancialData() {
             type="text"
             placeholder="Last Name"
             id="lastname1"
+            value={(userData != null) ? userData.lastName : ""}
             onChange={(v) =>
               setUserData({ ...userData, lastName: v.target.value })
             }
@@ -99,6 +101,7 @@ function FinancialData() {
             type="number"
             placeholder="Total Monthly Income"
             id="totin"
+            value={(userData != null && userData.income > 0) ? userData.income : ""}
             onChange={(v) =>
               setUserData({ ...userData, income: v.target.value })
             }
@@ -110,6 +113,7 @@ function FinancialData() {
             type="number"
             placeholder="Total Monthly expenses"
             id="totex"
+            value={(userData != null && userData.expenses > 0) ? userData.expenses : ""}
             onChange={(v) =>
               setUserData({ ...userData, expenses: v.target.value })
             }
@@ -121,6 +125,7 @@ function FinancialData() {
             type="number"
             placeholder="Current Savings"
             id="currentSavings"
+            value={(userData != null && userData.cur_savings > 0) ? userData.cur_savings : ""}
             onChange={(v) =>
               setUserData({ ...userData, cur_savings: v.target.value })
             }
@@ -133,6 +138,7 @@ function FinancialData() {
             type="number"
             placeholder="Housing"
             id="housing1"
+            value={(userData != null && userData.housing > 0) ? userData.housing : ""}
             onChange={(v) =>
               setUserData({ ...userData, housing: v.target.value })
             }
@@ -144,6 +150,7 @@ function FinancialData() {
             type="number"
             placeholder="Utilities"
             id="utilities1"
+            value={(userData != null && userData.utilities > 0) ? userData.utilities : ""}
             onChange={(v) =>
               setUserData({ ...userData, utilities: v.target.value })
             }
@@ -155,6 +162,7 @@ function FinancialData() {
             type="number"
             placeholder="Transportation"
             id="transportation1"
+            value={(userData != null && userData.transportation > 0) ? userData.transportation : ""}
             onChange={(v) =>
               setUserData({ ...userData, transportation: v.target.value })
             }
@@ -165,6 +173,8 @@ function FinancialData() {
             className="food"
             type="number"
             placeholder="Food"
+            id="food"
+            value={(userData != null && userData.food > 0) ? userData.food : ""}
             onChange={(v) => setUserData({ ...userData, food: v.target.value })}
           />
         </div>
@@ -174,6 +184,7 @@ function FinancialData() {
             type="number"
             placeholder="Debtrepayment"
             id="debtrepayment1"
+            value={(userData != null && userData.debt_repaytment > 0) ? userData.debt_repaytment : ""}
             onChange={(v) =>
               setUserData({ ...userData, debt_repaytment: v.target.value })
             }
@@ -185,6 +196,7 @@ function FinancialData() {
             type="number"
             placeholder="Insurance"
             id="insurance1"
+            value={(userData != null && userData.insurance > 0) ? userData.insurance : ""}
             onChange={(v) =>
               setUserData({ ...userData, insurance: v.target.value })
             }
@@ -196,6 +208,7 @@ function FinancialData() {
             type="number"
             placeholder="Health"
             id="health1"
+            value={(userData != null && userData.health_and_wealth > 0) ? userData.health_and_wealth : ""}
             onChange={(v) =>
               setUserData({ ...userData, health_and_wealth: v.target.value })
             }
@@ -207,6 +220,7 @@ function FinancialData() {
             type="number"
             placeholder="Entertainment"
             id="entertainment1"
+            value={(userData != null && userData.entertainment > 0) ? userData.entertainment : ""}
             onChange={(v) =>
               setUserData({ ...userData, entertainment: v.target.value })
             }
@@ -218,6 +232,7 @@ function FinancialData() {
             type="number"
             placeholder="Education"
             id="education1"
+            value={(userData != null && userData.education > 0) ? userData.education : ""}
             onChange={(v) =>
               setUserData({ ...userData, education: v.target.value })
             }
@@ -229,6 +244,7 @@ function FinancialData() {
             type="number"
             placeholder="Investments"
             id="investments1"
+            value={(userData != null && userData.investments > 0) ? userData.investments : ""}
             onChange={(v) =>
               setUserData({ ...userData, investments: v.target.value })
             }
@@ -240,6 +256,7 @@ function FinancialData() {
             type="number"
             placeholder="Family Expenses"
             id="familyexpenses1"
+            value={(userData != null && userData.family_expenses > 0) ? userData.family_expenses : ""}
             onChange={(v) =>
               setUserData({ ...userData, family_expenses: v.target.value })
             }
@@ -251,6 +268,7 @@ function FinancialData() {
             type="number"
             placeholder="Other"
             id="other1"
+            value={(userData != null && userData.other > 0) ? userData.other : ""}
             onChange={(v) =>
               setUserData({ ...userData, other: v.target.value })
             }
@@ -263,6 +281,7 @@ function FinancialData() {
             type="number"
             placeholder="Current Age"
             id="cage1"
+            value={(userData != null && userData.age > 0) ? userData.age : ""}
             onChange={(v) =>
               setUserData({ ...userData, age: v.target.value })
             }
@@ -274,6 +293,7 @@ function FinancialData() {
             type="number"
             placeholder="Desired Retirement year"
             id="rage1"
+            value={(userData != null && userData.retirement_year > 0) ? userData.retirement_year : ""}
             onChange={(v) =>
               setUserData({ ...userData, retirement_year: v.target.value })
             }
