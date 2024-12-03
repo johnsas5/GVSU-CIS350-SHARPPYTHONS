@@ -48,43 +48,49 @@ class User:
 		self.data = self.authenticate_pull_request()
 		user_data = self.data
 		self.categories = {}
-		print("self data: ",user_data)
-		self.income = int(user_data['income'])
-		self.age = int(user_data['age'])
-		self.expenses = int(user_data['expenses'])
-		self.housing = int(user_data['housing'])
-		self.categories.update({"housing":self.housing})
-		self.utilities = int(user_data['utilities'])
-		self.categories.update({"utilities":self.utilities})
-		self.transportation = int(user_data['transportation'])
-		self.categories.update({"transportation":self.transportation})
-		self.food = int(user_data['food'])
-		self.categories.update({"food":self.food})
-		self.debt_repayment = int(user_data['debt_repayment'])
-		self.categories.update({"debt_repayment":self.debt_repayment})
-		self.insurance = int(user_data['insurance'])
-		self.categories.update({"insurance":self.insurance})
-		self.health_and_wealth = int(user_data['health_and_wealth'])
-		self.categories.update({"health_and_wealth":self.health_and_wealth})
-		self.entertainment = int(user_data['entertainment'])
-		self.categories.update({"entertainment":self.entertainment})
-		self.education = int(user_data['education'])
-		self.categories.update({"education":self.education})
-		self.investments = int(user_data['investments'])
-		self.categories.update({"investments":self.investments})
-		self.family_expenses = int(user_data['family_expenses'])
-		self.categories.update({"family_expenses":self.family_expenses})
-		self.other = int(user_data['other'])
-		self.categories.update({"other":self.other})
-		#Declares a variable to hold their monthly savings
-		self.savings = 0
-		#Saves their retirement year goal
-		self.retirement_year = user_data['retirement_year']
-		#Saves their current savings amount for retirement calculations
-		self.cur_savings = user_data['cur_savings']
-		#Calculates each expense as a percentage of their income
-		#Also calculates the savings variable
-		self.income_breakdown = self.percent_of_total_expenses()
+		#print("self data: ",user_data)
+
+		#If the user_data is empty and returns NoneType, dont initialize the variables that depend on it
+		if(type(user_data) != type(dict)):
+			pass
+		else:
+
+			self.income = int(user_data['income'])
+			self.age = int(user_data['age'])
+			self.expenses = int(user_data['expenses'])
+			self.housing = int(user_data['housing'])
+			self.categories.update({"housing":self.housing})
+			self.utilities = int(user_data['utilities'])
+			self.categories.update({"utilities":self.utilities})
+			self.transportation = int(user_data['transportation'])
+			self.categories.update({"transportation":self.transportation})
+			self.food = int(user_data['food'])
+			self.categories.update({"food":self.food})
+			self.debt_repayment = int(user_data['debt_repayment'])
+			self.categories.update({"debt_repayment":self.debt_repayment})
+			self.insurance = int(user_data['insurance'])
+			self.categories.update({"insurance":self.insurance})
+			self.health_and_wealth = int(user_data['health_and_wealth'])
+			self.categories.update({"health_and_wealth":self.health_and_wealth})
+			self.entertainment = int(user_data['entertainment'])
+			self.categories.update({"entertainment":self.entertainment})
+			self.education = int(user_data['education'])
+			self.categories.update({"education":self.education})
+			self.investments = int(user_data['investments'])
+			self.categories.update({"investments":self.investments})
+			self.family_expenses = int(user_data['family_expenses'])
+			self.categories.update({"family_expenses":self.family_expenses})
+			self.other = int(user_data['other'])
+			self.categories.update({"other":self.other})
+			#Declares a variable to hold their monthly savings
+			self.savings = 0
+			#Saves their retirement year goal
+			self.retirement_year = user_data['retirement_year']
+			#Saves their current savings amount for retirement calculations
+			self.cur_savings = user_data['cur_savings']
+			#Calculates each expense as a percentage of their income
+			#Also calculates the savings variable
+			self.income_breakdown = self.percent_of_total_expenses()
 
 
 	
