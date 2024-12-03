@@ -21,7 +21,7 @@ data_path = "https://sharppythons-default-rtdb.firebaseio.com"
 
 service_account = {'serviceAccountId': 'firebase-adminsdk-1yoay@sharppythons.iam.gserviceaccount.com',}
 #service_account_key_path = "firebase_api_key/sharppythons-firebase-adminsdk-1yoay-f17a0eec84.json"
-service_account_key_path = "firebase_api_key/sharppythons-firebase-adminsdk-1yoay-f17a0eec84.json"
+service_account_key_path = "firebase_api_key/sharppythons-firebase-adminsdk-1yoay-38335f9e0e.json"
 cred_obj = firebase_admin.credentials.Certificate(service_account_key_path)
 default_app = firebase_admin.initialize_app(cred_obj, {
 	'databaseURL' : data_path,
