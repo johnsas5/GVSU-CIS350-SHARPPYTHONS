@@ -246,7 +246,7 @@ def GetFinancialData():
 #(can create response object yourself of use jsonify function)
 
 	response = make_response(json.dumps(user_data))
-	response.headers['Content-Type'] = 'application/json'
+	#response.headers['Content-Type'] = 'application/json'
 	return response
   
 
@@ -312,7 +312,7 @@ def PostFinancialData():
 #return flask response object: set data and response status code 
 #(can create response object yourself of use jsonify function)
 	response = make_response(json.dumps(user_data))
-	response.headers['Content-Type'] = 'application/json'
+	#response.headers['Content-Type'] = 'application/json'
 	return response
 
 
