@@ -51,9 +51,7 @@ class User:
 		#print("self data: ",user_data)
 
 		#If the user_data is empty and returns NoneType, dont initialize the variables that depend on it
-		if(type(user_data) != type(dict)):
-			pass
-		else:
+		if(user_data):
 
 			self.income = int(user_data['income'])
 			self.age = int(user_data['age'])
