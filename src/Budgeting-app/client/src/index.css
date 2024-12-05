@@ -720,3 +720,76 @@ header {
 .howto {
     text-align: left;
 }
+
+
+.namebox {
+  background-color: white;
+  padding: 10px;
+  height: 10px;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 10px;
+  color: black;
+}
+
+.balancebox {
+  background-color: white;
+  padding: 10px;
+  height: 10px;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 10px;
+  color: black;
+}
+
+.agebox {
+  background-color: white;
+  padding: 10px;
+  height: 10px;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 10px;
+  color: black;
+}
+
+.dagebox {
+  background-color: white;
+  padding: 10px;
+  height: 10px;
+  width: 150px;
+  border-radius: 10px;
+  margin-left: 10px;
+  color: black;
+}
+
+.namet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(40px, 127px); 
+}
+
+.currbalt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(40px, 218px);
+}
+
+.curraget {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(40px, 309px);
+}
+
+.daget {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(40px, 400px);
+}
+
+.accountSummary::-webkit-scrollbar {
+  display: none;
+}

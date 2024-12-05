@@ -24,9 +24,21 @@ function AccountSummaryPage() {
                 <div className='accountSummary'>
                     <h2 className='asumText'>Account Summary</h2>
                     <h4 className='aholdername'>Account Holder Name:</h4>
+                    <div className="namebox">
+                        <p className="namet"><b>Last Name, First Name</b></p>
+                    </div>
                     <h4 className='balance'>Account Balance:</h4>
+                    <div className="balancebox">
+                        <p className="currbalt"><b>$0.00</b></p>
+                    </div>
                     <h4 className='agetextasum'>Account Holder Age:</h4>
+                    <div className="agebox">
+                        <p className="curraget"><b>18 Years Old</b></p>
+                    </div>
                     <h4 className='dagetextasum'>Desired Retirement Age:</h4>
+                    <div className="dagebox">
+                        <p className="daget"><b>65 Years Old</b></p>
+                    </div>
                     <h3 className='tmbd'>This Month's Breakdown</h3>
                     <div className='tmbdcont'>
                     </div>
