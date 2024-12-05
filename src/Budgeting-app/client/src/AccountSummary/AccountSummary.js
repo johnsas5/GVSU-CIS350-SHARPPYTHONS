@@ -41,6 +41,7 @@ function AccountSummaryPage() {
                     </div>
                     <h3 className='tmbd'>This Month's Breakdown</h3>
                     <div className='tmbdcont'>
+                        <p className="tmbdtext"><b>You are currently overspending! Consider eating out less to save money.</b></p>
                     </div>
                 </div>
                 <div className='graphcontainer'>

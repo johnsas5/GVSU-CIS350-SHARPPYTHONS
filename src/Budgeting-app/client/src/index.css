@@ -644,6 +644,11 @@ header {
   margin-top: 30px;
 }
 
+.tmbdtext {
+  color: black;
+  text-align: left;
+}
+
 .tmbdcont {
   text-align: left;
   background-color: white;
