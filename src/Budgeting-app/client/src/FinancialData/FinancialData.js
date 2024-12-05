@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GetUserData, PostUserData } from "../UserDataRequests";
 import { UserData } from "../types";
 import { useAuthValue } from "../AuthContext";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, updatePassword } from "firebase/auth";
 
 function FinancialData() {
   const { currentUser } = useAuthValue();
@@ -20,9 +20,9 @@ function FinancialData() {
       else {
         console.log("user logged in");
       }
-
-      const data = GetUserData(currentUser);
-      setUserData(data);
+      GetUserData(currentUser).then((uData) => {
+        setUserData(uData);
+      });
     }
     catch (err) {
       console.log(err);
@@ -32,12 +32,13 @@ function FinancialData() {
   const onSubmit = (e) => {
     e.preventDefault();
     // Send a POST request to the endpoint
-    console.log("user FD 39: " + JSON.stringify(currentUser));
-    console.log("user data 40: " + JSON.stringify(userData));
-    var response = PostUserData(currentUser, userData);
-    if (response === 200) {
-      navigate("/Summary");
-    }
+    PostUserData(currentUser, userData).then((response) => {
+      console.log("Post response: " + response);
+      if (response === 200) {
+        console.log("Post Success: " + response);
+        navigate("/Summary");
+      }
+    });
   };
 
   const onClickSignOut = (e) => {
@@ -184,9 +185,9 @@ function FinancialData() {
             type="number"
             placeholder="Debtrepayment"
             id="debtrepayment1"
-            value={(userData != null && userData.debt_repaytment > 0) ? userData.debt_repaytment : ""}
+            value={(userData != null && userData.debt_repayment > 0) ? userData.debt_repaytment : ""}
             onChange={(v) =>
-              setUserData({ ...userData, debt_repaytment: v.target.value })
+              setUserData({ ...userData, debt_repayment: v.target.value })
             }
           />
         </div>

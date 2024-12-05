@@ -7,31 +7,42 @@ import { useNavigate } from "react-router-dom";
 import { getAuth, signOut } from "firebase/auth";
 
 function Summary() {
-  const {currentUser} = useAuthValue()
+  const { currentUser } = useAuthValue();
   const {data, setData} = useState(null);
   const [retirementData, setRetirementData] = useState(null);
   const [financeAdvice, setFinanceAdvice] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log("current user: " + currentUser);
     try {
-      const userData = GetUserData(currentUser);
-      if (userData != null) {
-        setData(userData);
-      } else {
-        console.log("no user data retrieved");
-      }
-      const userRetireData = GetRetirementData(currentUser);
-      if (userRetireData != null) {
-        setRetirementData(userRetireData);
-      } else {
-        console.log("no retirement data retriieved");
-      }
-      const userAdvice = GetFinanceAdvice(currentUser);
-      if (userAdvice != null) {
-        setFinanceAdvice(userAdvice);
-      } else {
-        console.log("no finance advice retrieved");
+      if (currentUser != null) {
+        GetUserData(currentUser).then((userData) => {
+          if (userData != null) {
+            setData(userData);
+            console.log("userData: " + userData);
+          } else {
+            console.log("no user data retrieved");
+          }
+        });
+        
+        GetRetirementData(currentUser).then((userRetireData) => {
+          if (userRetireData != null) {
+            setRetirementData(userRetireData);
+            console.log("retiredata: " + userRetireData);
+          } else {
+            console.log("no retirement data retriieved");
+          }
+        });
+        
+        GetFinanceAdvice(currentUser).then((userAdvice) => {
+          if (userAdvice != null) {
+            setFinanceAdvice(userAdvice);
+            console.log("advice: " + userAdvice);
+          } else {
+            console.log("no finance advice retrieved");
+          }
+        });
       }
     } catch (err) {
       console.log(err);

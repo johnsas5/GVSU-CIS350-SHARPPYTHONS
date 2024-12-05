@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export const GetUserData = (user) => {
   try {
-    user.getIdToken(true).then((idToken) => {
-      axios
+    user.getIdToken(true).then(async (idToken) => {
+      await axios
         .get("/FinancialData", {
           headers: {
             "Content-Type": "application/json",
@@ -11,8 +11,8 @@ export const GetUserData = (user) => {
           },
         })
         .then((response) => {
-          if (response.status === 200) {
-            return response.data;
+          if (response.status >= 200 && response.status < 300) {
+            return JSON.stringify(response.data);
           }
         })
         .catch((error) => {
@@ -28,8 +28,8 @@ export const GetUserData = (user) => {
 
 export const PostUserData = (user, data) => {
   try {
-    user.getIdToken(true).then((idToken) => {
-      axios
+    user.getIdToken(true).then(async (idToken) => {
+      await axios
         .post("/FinancialData", JSON.stringify(data), {
           headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const PostUserData = (user, data) => {
           },
         })
         .then((response) => {
-          if (response.status === 200) {
+          if (response.status >= 200 && response.status < 300) {
             console.log("Data Submitted", data);
           } else {
             console.log("Error Occured");
@@ -56,8 +56,8 @@ export const PostUserData = (user, data) => {
 
 export const GetRetirementData = (user) => {
   try {
-    user.getIdToken(true).then((idToken) => {
-      axios
+    user.getIdToken(true).then(async (idToken) => {
+      await axios
         .get("/RetirementData", {
           headers: {
             "Content-Type": "application/json",
@@ -65,8 +65,8 @@ export const GetRetirementData = (user) => {
           },
         })
         .then((response) => {
-          if (response.status === 200) {
-            return response.data;
+          if (response.status >= 200 && response.status < 300) {
+            return JSON.stringify(response.json);
           }
         })
         .catch((error) => {
@@ -82,8 +82,8 @@ export const GetRetirementData = (user) => {
 
 export const GetFinanceAdvice = (user) => {
   try {
-    user.getIdToken(true).then((idToken) => {
-      axios
+    user.getIdToken(true).then(async (idToken) => {
+      await axios
         .get("/FinanceAdvice", {
           headers: {
             "Content-Type": "application/json",
@@ -91,8 +91,8 @@ export const GetFinanceAdvice = (user) => {
           },
         })
         .then((response) => {
-          if (response.status === 200) {
-            return response.data;
+          if (response.status >= 200 && response.status < 300) {
+            return JSON.stringify(response.json);
           }
         })
         .catch((error) => {

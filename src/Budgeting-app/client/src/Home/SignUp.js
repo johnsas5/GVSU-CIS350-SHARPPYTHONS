@@ -12,7 +12,6 @@ function SignUp({isOpen, onClose}) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
         onClose();
       })
       .catch((error) => {
