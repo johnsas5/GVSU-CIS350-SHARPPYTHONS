@@ -4,11 +4,7 @@ import FinancialData from "./FinancialData";
 describe(FinancialData, () => {
 
     it("Financial Data page displays the financial form", () => {
-        renderMatches(
-            <MemoryRouter>
-                <FinancialData />
-            </MemoryRouter>
-        );
+        renderMatches(<FinancialData />);
     });
 
 });
