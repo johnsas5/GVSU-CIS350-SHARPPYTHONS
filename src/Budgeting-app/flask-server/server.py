@@ -490,6 +490,7 @@ def GetRetirementData():
 	#Returns a json file with the year as the key and the savings amount as the value 
 	#has a key value pair for each year from the current year up until their goal retirement year
 	projections = cur_user.retirement_projection()
+	
 	response = jsonify(json.dumps(projections))
 	return response
   #get firebase token id from header

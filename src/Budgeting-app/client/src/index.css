@@ -645,6 +645,7 @@ header {
 }
 
 .tmbdcont {
+  text-align: left;
   background-color: white;
   padding: 20px;
   height: 130px;

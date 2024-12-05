@@ -20,8 +20,8 @@ function Summary() {
         async function gud() {
           var uData = await GetUserData(currentUser)
           if (uData != null) {
-            console.log("userData: " + uData);
-            setUserData(uData);
+            console.log("userData: " + typeof(uData));
+            setUserData(JSON.parse(uData));
           } else {
             console.log("no user data retrieved");
           }
@@ -30,12 +30,11 @@ function Summary() {
         async function grd() {
           var userRetireData = await GetRetirementData(currentUser);
           if (userRetireData != null) {
-            setRetirementData(userRetireData);
-            console.log("retiredata: " + userRetireData);
+            setRetirementData(JSON.parse(userRetireData));
+            console.log("retiredata from S: " + typeof(userRetireData));
           } else {
             console.log("no retirement data retriieved");
           }
-          console.log("retire data: " + retirementData);
         }
         grd();
         async function gfa() {
@@ -55,7 +54,7 @@ function Summary() {
     } catch (err) {
       console.log(err);
     }
-  }, [currentUser]);
+  }, []);
 
   const onClickSignOut = (e) => {
     e.preventDefault();
@@ -73,7 +72,7 @@ function Summary() {
     }
   }
 
-  if (userData === null) {
+  if (userData == null || retirementData == null || financeAdvice == null) {
     return (<h1>No user data retreived</h1>)
   }
   return (
@@ -91,24 +90,42 @@ function Summary() {
         <div className="accountSummary">
           <h2 className="asumText">Account Summary</h2>
           <h4 className="aholdername">Account Holder Name:</h4>
-          <h4 className="balance">Account Balance:</h4>
-          <h4 className="agetextasum">Account Holder Age:</h4>
-          <h4 className="dagetextasum">Desired Retirement Age:</h4>
-          <h3 className="tmbd">This Month's Breakdown</h3>
-          <div className="tmbdcont">
-            <p>{financeAdvice}</p>
+          <div className="namebox">
+            <p className="namet">
+              <b>{userData.lastName}, {userData.firstName}</b>
+            </p>
           </div>
+          <h4 className="balance">Account Balance:</h4>
+          <div className="balancebox">
+            <p className="currbalt">
+              <b>${userData.cur_savings}</b>
+            </p>
+          </div>
+          <h4 className="agetextasum">Account Holder Age:</h4>
+          <div className="agebox">
+            <p className="curraget">
+              <b>{userData.age}</b>
+            </p>
+          </div>
+          <h4 className="dagetextasum">Desired Retirement Age:</h4>
+          <div className="dagebox">
+            <p className="daget">
+              <b>year: {userData.retirement_year}</b>
+            </p>
+          </div>
+          <h3 className="tmbd">Advice</h3>
+          <div className="tmbdcont"><p>{financeAdvice}</p></div>
         </div>
         <div className="graphcontainer">
           <h2 className="graphText">Savings Graph</h2>
           <div className="graphspace">
-            <SavingsGraph />
+            <SavingsGraph dataIn={userData} />
           </div>
         </div>
         <div className="graphcontainer">
           <h2 className="graphText">Retirement Graph</h2>
           <div className="graphspace">
-            <RetirementGraph />
+            <RetirementGraph dataIn={retirementData} />
           </div>
         </div>
       </div>
