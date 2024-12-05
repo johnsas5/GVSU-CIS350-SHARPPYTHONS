@@ -1,7 +1,7 @@
 export const UserData = {
   firstName: "",
   lastName: "",
-  age: 18,
+  age: 0,
   retirement_year: 0,
   income: 0,
   expenses: 0,
@@ -17,7 +17,7 @@ export const UserData = {
   investments: 0,
   family_expenses: 0,
   other: 0,
-  curr_savings: 0
+  cur_savings: 0
 }
 
 export default UserData;

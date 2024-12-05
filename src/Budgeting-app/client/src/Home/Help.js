@@ -1,21 +1,25 @@
 import React, {useState} from 'react';
-
-function moveopen() {
-    const navigate = useNavigate();
-    navigate("/Open-Account")
-}
-
-function movelog() {
-    const navigate = useNavigate();
-    navigate("/Login")
-}
-
-function movehome() {
-    const navigate = useNavigate();
-    navigate("/Home")
-}
+import { useNavigate } from "react-router-dom";
 
 function Help() {
+    const navigate = useNavigate();
+
+    const moveopen = (e) => {
+      e.preventDefault();
+      const navigate = useNavigate();
+      navigate("/Open-Account");
+    }
+
+    function movelog() {
+      const navigate = useNavigate();
+      navigate("/Login");
+    }
+
+    function movehome() {
+      const navigate = useNavigate();
+      navigate("/Home");
+    }
+
     return (
         <div>
             <div className="options">

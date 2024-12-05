@@ -21,8 +21,9 @@ function FinancialData() {
         console.log("user logged in: " + currentUser);
         async function gud() {
           var uData = await GetUserData(currentUser)
-          setUserData(uData);
-          console.log("FD data: " + uData);
+          if (uData != null && uData != "null"){
+            setUserData(uData);
+          }
         }
         gud();
       }
@@ -36,6 +37,7 @@ function FinancialData() {
     e.preventDefault();
     // Send a POST request to the endpoint
     async function pud() {
+      console.log("user data FD39: " + JSON.stringify(userData));
       var response = await PostUserData(currentUser, userData)
       console.log("Post response: " + response);
       if (response >= 200 && response < 300) {

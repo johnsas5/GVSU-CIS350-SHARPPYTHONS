@@ -114,7 +114,7 @@ function Summary() {
             </p>
           </div>
           <h3 className="tmbd">Advice</h3>
-          <div className="tmbdcont"><p>{financeAdvice}</p></div>
+          <div className="tmbdcont"><p>"testing"</p></div>
         </div>
         <div className="graphcontainer">
           <h2 className="graphText">Savings Graph</h2>
