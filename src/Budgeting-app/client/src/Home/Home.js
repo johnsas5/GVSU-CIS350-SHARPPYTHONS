@@ -22,6 +22,10 @@ function Home() {
     setShowSignUp(true);
   }
 
+  const onClickHelp = () => {
+    navigate("/Help");
+  }
+
   useEffect(() => {
     if (currentUser != null){
       console.log("user not null");
@@ -32,13 +36,15 @@ function Home() {
   return (
     <div>
       <section>
-        <button onClick={onClickSignUp} className="open-account">
+        <button onClick={onClickSignUp} className="navButtons">
           Sign Up
         </button>
-        <button onClick={onClickLogin} className="log-in">
+        <button onClick={onClickLogin} className="navButtons">
           Log In
         </button>
-        <button className="help">Help</button>
+        <button onClick={onClickHelp} className="navButtons">
+          Help
+        </button>
       </section>
       {showWelcome && (
         <div className="hero">

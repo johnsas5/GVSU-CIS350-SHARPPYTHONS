@@ -57,14 +57,14 @@ function RetirementGraph({dataIn}) {
       .attr("stroke", "steelblue")
       .attr("stroke-width", 1.5)
       .attr("d", line)
-      .attr("transform", "translate(50, 10)");
+      .attr("transform", "translate(60, 10)");
 
     // Create x-axis
     const xAxis = d3.axisBottom(xScale);
     svg
       .append("g")
       .attr("class", "x-axis")
-      .attr("transform", `translate(50,${height + 10})`)
+      .attr("transform", `translate(60,${height + 10})`)
       .call(xAxis);
 
     // Create y-axis
@@ -72,7 +72,7 @@ function RetirementGraph({dataIn}) {
     svg
       .append("g")
       .attr("class", "y-axis")
-      .attr("transform", "translate(50, 10)")
+      .attr("transform", "translate(60, 10)")
       .call(yAxis);
 
   }, [data, height, width]);

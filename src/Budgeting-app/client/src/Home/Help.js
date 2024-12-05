@@ -1,50 +1,32 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 function Help() {
     const navigate = useNavigate();
 
-    const moveopen = (e) => {
-      e.preventDefault();
-      const navigate = useNavigate();
-      navigate("/Open-Account");
-    }
-
-    function movelog() {
-      const navigate = useNavigate();
-      navigate("/Login");
-    }
-
-    function movehome() {
-      const navigate = useNavigate();
-      navigate("/Home");
+    const movehome = () => {
+      navigate("/");
     }
 
     return (
-        <div>
-            <div className="options">
-            <button 
-                onClick={moveopen}
-                className="open-account">
-                Open Account
-            </button>
-            <button
-                onclick={movelog}
-                className="login">
-                Log In
-            </button>
-            <button
-                onClick={movehome}
-                className="home">
-                Home
-            </button>
-            </div>
-            <div className="formbackground">
-            </div>
-            <div className="helptextbox">
-                <h1>Account Set Up</h1>
-                <p className="howto">Begin by opening an account. Once you have opened your account fill out the financial form. Finally proceed to the account summary for personalized suggestions and visual representations of your finances.</p>
-            </div>
+      <div>
+        <section>
+          <button onClick={movehome} className="navButtons">
+            Home
+          </button>
+        </section>
+        <div className="formbackground"></div>
+        <div className="helptextbox">
+          <h1>Account Set Up</h1>
+          <p className="howto">
+            Begin by opening an account. Once you have opened your account fill
+            out the financial form. Finally proceed to the account summary for
+            personalized suggestions and visual representations of your
+            finances.
+          </p>
         </div>
-      );
+      </div>
+    );
 }
+
+export default Help;

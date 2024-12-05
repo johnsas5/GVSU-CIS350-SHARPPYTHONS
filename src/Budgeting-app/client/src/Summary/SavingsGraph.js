@@ -16,7 +16,7 @@ function addKeys(d) {
 }
 
 function SavingsGraph({dataIn}) {
-  const data = addKeys(dataIn).sort((a, b) => a.value - b.value);;
+  const data = addKeys(dataIn).sort((a, b) => b.value - a.value);;
   // const data = [
   //   { name: "Housing", value: 50 },
   //   { name: "Utilities", value: 25 },

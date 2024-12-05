@@ -4,6 +4,7 @@ import Home from "./Home/Home";
 import FinancialData from "./FinancialData/FinancialData";
 import Summary from "./Summary/Summary";
 import NoPage from "./NoPage";
+import Help from "./Home/Help";
 import "./App.css";
 import { AuthProvider } from "./AuthContext";
 
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="Summary" element={<Summary />} />
             <Route path="FinancialData" element={<FinancialData />} />
+            <Route path="Help" element={<Help />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>
