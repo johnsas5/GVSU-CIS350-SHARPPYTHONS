@@ -110,12 +110,17 @@ class User:
 	def retirement_projection(self):
 		current_year = int(datetime.datetime.now().year)
 		yearly_savings = self.savings * 12
-		compound_savings = int(self.cur_savings)
+		compound_savings = float(self.cur_savings)
 		projection = {}
+		#assuming that the user can get an 8 percent return rate per year
+		yearly_int_rate = 0.08
 		while current_year <= int(self.retirement_year):
-			compound_savings += yearly_savings
-			projection.update({current_year : compound_savings})
+			compound_savings = (compound_savings + yearly_savings) * (1 + yearly_int_rate)
+			projection[current_year] = round(compound_savings, 2)
 			current_year += 1
+			#compound_savings += yearly_savings
+			#projection.update({current_year : compound_savings})
+			#current_year += 1
 		return projection
 		
 
