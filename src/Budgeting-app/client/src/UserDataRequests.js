@@ -1,107 +1,91 @@
 import axios from 'axios';
 
-export const GetUserData = (user) => {
+const GetUserData = async (user) => {
   try {
-    user.getIdToken(true).then(async (idToken) => {
-      await axios
-        .get("/FinancialData", {
+    var tok = await GetUserToken(user);
+    var response = await axios.get("/FinancialData", {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + idToken,
+            Authorization: "Bearer " + tok,
           },
-        })
-        .then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return JSON.stringify(response.data);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          return null;
         });
-    });
+    if (response.status >= 200 && response.status < 300) {
+      console.log("response data: " + response.data);
+      return response.data;
+    }
+    else {
+      return null;
+    }
   } catch (err) {
     console.log(err);
     return null;
   };
 }
 
-export const PostUserData = (user, data) => {
+const PostUserData = async (user, data) => {
   try {
-    user.getIdToken(true).then(async (idToken) => {
-      await axios
-        .post("/FinancialData", JSON.stringify(data), {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + idToken,
-          },
-        })
-        .then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            console.log("Data Submitted", data);
-          } else {
-            console.log("Error Occured");
-          }
-          return response.status;
-        })
-        .catch((error) => {
-          console.error("Error posting user data: ", error);
-        });
+    var tok = await GetUserToken(user);
+    var response = await axios.post("/FinancialData", data, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + tok,
+      },
     });
+    if (response.status >= 200 && response.status < 300) {
+      console.log("Data Submitted", data);
+    } else {
+      console.log("Error Occured");
+    }
+    return response.status;
   } catch (err) {
     console.log(err);
-    return;
+    return null;
   }
 }
 
-export const GetRetirementData = (user) => {
+const GetRetirementData = async (user) => {
   try {
-    user.getIdToken(true).then(async (idToken) => {
-      await axios
-        .get("/RetirementData", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + idToken,
-          },
-        })
-        .then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return JSON.stringify(response.json);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          return null;
-        });
+    var tok = await GetUserToken(user);
+    var response = await axios.get("/RetirementData", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + tok,
+      },
     });
+    if (response.status >= 200 && response.status < 300) {
+      return response.data;
+    } else {
+      return null;
+    }
   } catch (err) {
     console.log(err);
     return null;
   }
 };
 
-export const GetFinanceAdvice = (user) => {
+const GetFinanceAdvice = async (user) => {
   try {
-    user.getIdToken(true).then(async (idToken) => {
-      await axios
-        .get("/FinanceAdvice", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + idToken,
-          },
-        })
-        .then((response) => {
-          if (response.status >= 200 && response.status < 300) {
-            return JSON.stringify(response.json);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          return null;
-        });
+    var tok = await GetUserToken(user);
+    var response = await axios.get("/FinanceAdvice", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + tok,
+      },
     });
+    if (response.status >= 200 && response.status < 300) {
+      return response.data;
+    } else {
+      return null;
+    }
   } catch (err) {
     console.log(err);
     return null;
   }
 };
+
+const GetUserToken = async (user) =>{
+  var token = await user.getIdToken(true);
+  return token;
+}
+
+export { GetUserData, PostUserData, GetRetirementData, GetFinanceAdvice };

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
 import Home from "./Home/Home";
 import FinancialData from "./FinancialData/FinancialData";
 import Summary from "./Summary/Summary";
@@ -17,8 +15,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
-            <Route path="FinancialData" element={<FinancialData />} />
             <Route path="Summary" element={<Summary />} />
+            <Route path="FinancialData" element={<FinancialData />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         </BrowserRouter>

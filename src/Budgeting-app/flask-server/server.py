@@ -110,9 +110,9 @@ class User:
 	def retirement_projection(self):
 		current_year = int(datetime.datetime.now().year)
 		yearly_savings = self.savings * 12
-		compound_savings = self.cur_savings
+		compound_savings = int(self.cur_savings)
 		projection = {}
-		while current_year <= self.retirement_year:
+		while current_year <= int(self.retirement_year):
 			compound_savings += yearly_savings
 			projection.update({current_year : compound_savings})
 			current_year += 1
@@ -245,7 +245,7 @@ def GetFinancialData():
 #return flask response object: set data and response status code 
 #(can create response object yourself of use jsonify function)
 
-	response = make_response(json.dumps(user_data))
+	response = jsonify(json.dumps(user_data))
 	#response.headers['Content-Type'] = 'application/json'
 	return response
   
@@ -339,7 +339,7 @@ def GetIncomeSummary():
 	#calls the percent_of_total_expenses() method and saves the result
 	user_data = cur_user.percent_of_total_expenses()
 	#returns a json file with all the expenses listed as percentages
-	response = make_response(json.dumps(user_data))
+	response = jsonify(json.dumps(user_data))
 	return response
 	#If the result is 0, there are no expenses stored
 
@@ -359,7 +359,7 @@ def UpdateFinacialData():
 	user_token = id_token.split('Bearer ')[-1]
 	cur_user = User(user_token)
 	cur_user.authenticate_update_request(data)
-	response = make_response('200')
+	response = jsonify('200')
 	return response
 
 
@@ -382,7 +382,6 @@ def GetFinancialAdvice():
 
 	#creates a user instance based on token from header
 	user = User(user_token)
-	
 #   #formulate financial advice based on user data
 
 #Check their age, if they are 25 years old or younger, case1, if not, case2
@@ -456,7 +455,7 @@ def GetFinancialAdvice():
 			financial_advice = f"It appears you are currently not meeting your savings goals, is there any way you can reduce the following expenses?: {max1Name}, {max2Name}, {max3Name}"
 		else:
 			financial_advice = f'It appears that you are currently meeting your savings goals, great work!'
-	response = make_response(financial_advice)
+	response = jsonify(financial_advice)
 	return response
 		
 #case1:
@@ -491,8 +490,7 @@ def GetRetirementData():
 	#Returns a json file with the year as the key and the savings amount as the value 
 	#has a key value pair for each year from the current year up until their goal retirement year
 	projections = cur_user.retirement_projection()
-	response = make_response(json.dumps(projections))
-	response.headers['Content-Type'] = 'application/json'
+	response = jsonify(json.dumps(projections))
 	return response
   #get firebase token id from header
   #verify firebase token still valid

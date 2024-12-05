@@ -8,46 +8,54 @@ import { getAuth, signOut } from "firebase/auth";
 
 function Summary() {
   const { currentUser } = useAuthValue();
-  const {data, setData} = useState(null);
+  const [userData, setUserData] = useState(null);
   const [retirementData, setRetirementData] = useState(null);
   const [financeAdvice, setFinanceAdvice] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("current user: " + currentUser);
     try {
       if (currentUser != null) {
-        GetUserData(currentUser).then((userData) => {
-          if (userData != null) {
-            setData(userData);
-            console.log("userData: " + userData);
+        console.log("current user S: " + currentUser);
+        async function gud() {
+          var uData = await GetUserData(currentUser)
+          if (uData != null) {
+            console.log("userData: " + uData);
+            setUserData(uData);
           } else {
             console.log("no user data retrieved");
           }
-        });
-        
-        GetRetirementData(currentUser).then((userRetireData) => {
+        }
+        gud();
+        async function grd() {
+          var userRetireData = await GetRetirementData(currentUser);
           if (userRetireData != null) {
             setRetirementData(userRetireData);
             console.log("retiredata: " + userRetireData);
           } else {
             console.log("no retirement data retriieved");
           }
-        });
-        
-        GetFinanceAdvice(currentUser).then((userAdvice) => {
+          console.log("retire data: " + retirementData);
+        }
+        grd();
+        async function gfa() {
+          var userAdvice = await GetFinanceAdvice(currentUser);
           if (userAdvice != null) {
             setFinanceAdvice(userAdvice);
             console.log("advice: " + userAdvice);
           } else {
             console.log("no finance advice retrieved");
           }
-        });
+        }
+        gfa();
+      }
+      else {
+        console.log("User is null");
       }
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [currentUser]);
 
   const onClickSignOut = (e) => {
     e.preventDefault();
@@ -65,7 +73,7 @@ function Summary() {
     }
   }
 
-  if (data === null) {
+  if (userData === null) {
     return (<h1>No user data retreived</h1>)
   }
   return (

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GetUserData, PostUserData } from "../UserDataRequests";
 import { UserData } from "../types";
 import { useAuthValue } from "../AuthContext";
-import { getAuth, signOut, updatePassword } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 
 function FinancialData() {
   const { currentUser } = useAuthValue();
@@ -18,11 +18,14 @@ function FinancialData() {
         navigate("/");
       }
       else {
-        console.log("user logged in");
+        console.log("user logged in: " + currentUser);
+        async function gud() {
+          var uData = await GetUserData(currentUser)
+          setUserData(uData);
+          console.log("FD data: " + uData);
+        }
+        gud();
       }
-      GetUserData(currentUser).then((uData) => {
-        setUserData(uData);
-      });
     }
     catch (err) {
       console.log(err);
@@ -32,13 +35,15 @@ function FinancialData() {
   const onSubmit = (e) => {
     e.preventDefault();
     // Send a POST request to the endpoint
-    PostUserData(currentUser, userData).then((response) => {
+    async function pud() {
+      var response = await PostUserData(currentUser, userData)
       console.log("Post response: " + response);
-      if (response === 200) {
+      if (response >= 200 && response < 300) {
         console.log("Post Success: " + response);
         navigate("/Summary");
       }
-    });
+    }
+    pud();
   };
 
   const onClickSignOut = (e) => {
