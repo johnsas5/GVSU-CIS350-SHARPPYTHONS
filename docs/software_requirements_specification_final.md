@@ -1,6 +1,5 @@
 # Overview
-<Describe the purpose of this document in 1 paragraph of less … hint: it is
-your SRS>
+The purpose of this document, the Software Requirements Specification, is to describe the functional and non-functional requirements for the system we developed. The following will serve as a comprehensive guide for the stakeholders, developers, and our team to ensure we share a similar understanding of the websites objectives and capabilities. Here we will specify the expected functioality, performance, constraints, and user interactions. This will allow us to align our design and functionality with the completed application. 
 # Software Requirements
 <Describe the structure of this section>
 ## Functional Requirements
