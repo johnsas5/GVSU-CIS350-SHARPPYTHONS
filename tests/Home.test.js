@@ -1,4 +1,4 @@
-import Home from "./Home";
+import Home from "../src/Budgeting-app/client/src/Home/Home";
 
 describe(Home, () => {
 

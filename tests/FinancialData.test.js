@@ -1,5 +1,5 @@
 import { MemoryRouter } from "react-router-dom";
-import FinancialData from "./FinancialData";
+import FinancialData from "../src/Budgeting-app/client/src/FinancialData/FinancialData";
 
 describe(FinancialData, () => {
 

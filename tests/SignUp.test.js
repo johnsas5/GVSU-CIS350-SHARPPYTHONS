@@ -1,4 +1,4 @@
-import SignUp from "./SignUp";
+import SignUp from "../src/Budgeting-app/client/src/Home/SignUp";
 
 describe(SignUp, () => {
 

@@ -1,4 +1,4 @@
-import Login from "./Login";
+import Login from "../src/Budgeting-app/client/src/Home/Login";
 
 describe(Login, () => {
 

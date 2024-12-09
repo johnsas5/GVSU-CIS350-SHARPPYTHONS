@@ -1,4 +1,4 @@
-import Help from "./Help";
+import Help from "../src/Budgeting-app/client/src/Home/Help";
 
 describe(Help, () => {
 
