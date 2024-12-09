@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react";
 function addKeys(d) {
   var newobj = [];
   for (let key in d){
-    if (key != "age" && key != "cur_savings" && key != "expenses" &&
-    key != "firstName" && key != "lastName" && key != "income" && key != "retirement_year"){
+    if (key !== "age" && key !== "cur_savings" && key !== "expenses" &&
+    key !== "firstName" && key !== "lastName" && key !== "income" && key !== "retirement_year"){
       let test = { category:key, value:Number(d[key]) };
       newobj.push(test);
     }

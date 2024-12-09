@@ -16,10 +16,11 @@ Our team is looking to build a website to act as a budget tool for those using i
 Placeholder for source code
 
 # To run client locally:
+In the client folder copy .env.production and rename it to .env.development. This file is for using npm start for dev environment.
+Replace the environment variables with personal account information for firebase.
 cd to client folder, build, and start client
 
 # build react front end client:
-
 npm run build
 
 # start client:
