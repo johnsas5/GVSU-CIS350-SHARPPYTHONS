@@ -5,7 +5,7 @@ functional and nonfunctional requirements for each feature.
 1. **Login Page**
     1. *Users must be able to login using an email and password*
     2. *The system must validate the users login creditentials againsts a database of current users.*
-    3. *The system must redirect the user to their home page after succesfully logging in.*
+    3. *The system must redirect the user to their finance form page after succesfully logging in.*
 2. **Signup Form**
      1. *Users must be able to signup using any valid email address*
      2. *The system must save the new user to a database of current users*
@@ -15,18 +15,21 @@ functional and nonfunctional requirements for each feature.
 5. **Retirement Tool**
      1. *The retirement tool must allow the user to set a retirement savings goal amount, and a due date of when they would like to have saved that amount.*
      2. *The retirement tool must calculate a monthly payment plan for the user which will allow them to reach their savings goal by the specified due date.*
-6. **Help Page**
+     3. *Requests sent from client to server shall use HTTPS*
+   **Help Page**
 	1. *The help page shall display clear instructions for how to access the input form*
 	2. *The help page shall display clear instructions for how to open an account*
 	3. *The help page shall display clear instructions for how to login if the user already has an account*
 	4. *The help page shall display the purpose of the website*
-7. **Financial Form**
+6. **Financial Form**
 	1. *The form shall include a field for the user to input their monthly income*
 	2. *The form shall include a field for the user to input their monthly expenses*
-	3. *The data inputted from the user shall be sent to the server and saved upon hitting the submit button*
+	3. *The form shall include a field for the user to input their age*
+	4. *The form shall include a field for the user to input year they want to retire*
+	5. *The data inputted from the user shall be sent to the server and saved upon hitting the submit button*
 # Non-Functional Requirements
 1. **Login Page**
-    1. *It should take no more than 60 seconds for a user to login to their profile*
+    1. *It should take no more than 5 seconds for a user to login to their profile*
 2. **Signup Form**
      1. *The signup form will enforce some parameters for user generated passwords:*
      2. *Passwords must have at least one uppercase letter*
@@ -41,6 +44,8 @@ functional and nonfunctional requirements for each feature.
      1. *The retirement tool should be tailored based on a user's age. For example, younger users will be giving more aggresive savings targets, while older users may get less agressive savings targets.*
      2. *The retirement graph will have alternative text that is screen reader compatible*
      3. *The graph line color will contrast the background so users with minor visual impairments can determine the direction of the graph*
+     4. *There shall be an option to return to the financial form*
+     5. *There shall be an option to sign out*
 5. **Help Page**
 	1. *The help page shall be displayed in a simple and intuitive manner*
 	2. *The help page text shall have a readable font*
@@ -50,3 +55,4 @@ functional and nonfunctional requirements for each feature.
 	2. *The input fields should only accept numbers and no other characters to prevent malicious code attacks*
     3. *The Financial Form shall be intiutive so that the user understands what they need to fill out*
     4. *Upon resizing the screen the form will be correctly updated to the new dimensions*
+    5. *Sign out option shall be available on the form*
