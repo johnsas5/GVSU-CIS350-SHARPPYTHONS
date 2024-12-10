@@ -28,14 +28,15 @@ Software requirements defines what a system should do (functional requirements) 
 | FR9 | The user shall be redirected to the financial form upon a successful login. |
 | FR10 | The login contain shall have a submit button that sends to the input data to the server once clicked. |
 
-### <Retirement Page>
+### Account Summary Page
 
 | ID  | Requirement     | 
 | :-------------: | :----------: |
-| FR4 | <Requirement 1> | 
-| FR5 | <Requirement 2> | 
-| FR6 | <Requirement 3> | 
-| … | … |
+| FR11 | The system shall present the user with their name and balance. | 
+| FR12 | The system shall show the users projected savings for retirement at a fixed 8% interest rate. | 
+| FR13 | The system shall show the user their monthly expenses in the form of bar graph. | 
+| FR14 | The navigation bar shall allow the user to backtrack to the financial form to update data. |
+| FR15 | The system shall provide the user with a financial suggestion based on their current spending patterns. |
 
 ## Non-Functional Requirements
 
