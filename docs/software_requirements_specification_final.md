@@ -22,10 +22,11 @@ Software requirements defines what a system should do (functional requirements) 
 
 | ID  | Requirement     | 
 | :-------------: | :----------: |
-| FR4 | <Requirement 1> | 
-| FR5 | <Requirement 2> | 
-| FR6 | <Requirement 3> | 
-| … | … |
+| FR6 | There shall be fields for the user to input both their username and password. | 
+| FR7 | The system shall allow users to securely type their password in a masked input field. | 
+| FR8 | The user shall be disallowed into an account if their username or password are incorrect. | 
+| FR9 | The user shall be redirected to the financial form upon a successful login. |
+| FR10 | The login contain shall have a submit button that sends to the input data to the server once clicked. |
 
 ### <Retirement Page>
 
