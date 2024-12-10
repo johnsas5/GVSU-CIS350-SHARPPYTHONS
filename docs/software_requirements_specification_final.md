@@ -82,16 +82,20 @@ The purpose of software artifacts is to visually document the development proces
 
 ## Unit tests
 
-(copy/paste the below table a minimum of 4 times)
 
 | ID  | Description | Steps | Input Values | Expected Output | Actual Output | Pass/Fail | Requirement Link |
 | :-------------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
-| TC1 | <TC1 description> | <steps to execute TC1> | <input values to this test case> | <expected output as a result of test case> | <actual output of test case> | <did it pass or fail?> | <requirement IDs this test case is linked to> |
+| Test-001 | Verify the FinancialData component renders a financial form. | 1. Import the FinancialData component. 2. Wrap the component in <MemoryRouter>. 3. Use render to render the component. 4. Check for the presence of text or elements related to the financial form. | N/A | The financial form is displayed on the screen. | The financial form is displayed. | Pass |[link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#financial-form) |
+| Test-002 | Verify the Help component renders without crashing.| 1. Import the Help component. 2. Use render() from @testing-library/react to render the Help component. 3. Observe whether any errors occur during rendering. | N/A |The Help component renders successfully without errors. |The Help component renders without crashing. | Pass |[link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#financial-form) |
+| Test-003 | Verify the home page renders without crashing. | 1. Import the Home component. 2. Import render from @testing-library/react. 3. Use render(<Home />) to render the component. 4. Observe if any errors occur during rendering.| N/A |The Home page renders successfully without any errors or crashes. | The Home page renders without crashing. | Pass | [link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#financial-form) |
+| Test-004 | Verify the login page renders without crashing. | 1. Import the Login component. 2. Import render from @testing-library/react. 3. Use render(<Home />) to render the component. 4. Observe if any errors occur during rendering.| N/A |The Login page renders successfully without any errors or crashes. | The Login page renders without crashing. | Pass | [link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#login-page) |
+| Test-005 | Verify the Sign Up page renders without crashing. | 1. Import the SignUp component. 2. Import render from @testing-library/react. 3. Use render(<Home />) to render the component. 4. Observe if any errors occur during rendering.| N/A |The Sign Up page renders successfully without any errors or crashes. | The Sign Up page renders without crashing. | Pass | [link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#login-page) |
 
 ## Integration tests
 
-(copy/paste the above table a minimum of 3 times)
+| ID  | Description | Steps | Input Values | Expected Output | Actual Output | Pass/Fail | Requirement Link |
+| :-------------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
+| Test-006 | Posting user data returns success | 1. Authenticate user using signInWithEmailAndPassword. 2. Call PostUserData with UserData. 3. Validate response code. | currentUser (authenticated user), UserData JSON | Response status 200 (Success) | 200 | Pass | [link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#login-page-1) |
+| Test-007 | Get user data returns previously posted data | 1. Authenticate user using signInWithEmailAndPassword. 2. Call PostUserData. 3. Call GetUserData. 4. Compare response to UserData.| currentUser (authenticated user), UserData JSON | Resonse matches the UserData JSON | Matches | Pass | [link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#login-page-1) |
+| Test-008 | Finace advice returns a response | 1. Authenticate user using signInWithEmailAndPassword. 2. Call GetFinanceAdvice. 3. Validate that the response is not null/undefined.| currentUser (authenticated user) | GetFinanceAdvice returns any non-null data | Data returned | Pass | [link](https://github.com/johnsas5/GVSU-CIS350-SHARPPYTHONS/blob/main/docs/software_requirements_specification_final.md#financial-form-1) |
 
-## System tests
-
-(copy/paste the above table a minimum of 3 times)
