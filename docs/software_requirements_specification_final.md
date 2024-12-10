@@ -8,23 +8,33 @@ Software requirements defines what a system should do (functional requirements) 
 
 ## Functional Requirements
 
-### <Name of Feature 1> 
+### <Financial Form> 
 
 | ID  | Requirement     | 
 | :-------------: | :----------: | 
-| FR1 | <Requirement 1> | 
-| FR2 | <Requirement 2> | 
-| FR3 | <Requirement 3> | 
-| … | … |
+| FR1 | The form shall have different fields for each expense for the user to fill out. | 
+| FR2 | The system shall calculate the monthly income and expenses on the back end. | 
+| FR3 | The users finacial data shall be saved for later use. | 
+| FR4 | The system shall validate the input data to only accept numerical values |
+| FR5 | The form shall have a submit button for the user to send their data to the server once completed. |
 
-### <Name of Feature 2>
+### <Login Page>
 
 | ID  | Requirement     | 
 | :-------------: | :----------: |
 | FR4 | <Requirement 1> | 
 | FR5 | <Requirement 2> | 
 | FR6 | <Requirement 3> | 
-| … | … | 
+| … | … |
+
+### <Retirement Page>
+
+| ID  | Requirement     | 
+| :-------------: | :----------: |
+| FR4 | <Requirement 1> | 
+| FR5 | <Requirement 2> | 
+| FR6 | <Requirement 3> | 
+| … | … |
 
 ## Non-Functional Requirements
 
