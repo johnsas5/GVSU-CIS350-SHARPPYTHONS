@@ -55,10 +55,10 @@ Software requirements defines what a system should do (functional requirements) 
 | ID  | Requirement     | 
 | :-------------: | :----------: | 
 | NFR6 | The users login data shall be encrypted with AES-256 in the firebase server. | 
-| NFR7 |  |
-| NFR8 | < Non-Functional Requirement 3> |
-| NFR9 | … | 
-| NFR10 |  |
+| NFR7 | The back end shall authenticate the user's credentials within 5 seconds of submitting. |
+| NFR8 | The system shall be able to handle 50 simultaneous logins without issues. |
+| NFR9 | The system shall render the login page within 1 second upon user navigation. | 
+| NFR10 | The system shall have a consistent layout and design across all supported devices. |
 
 ### Account Summary
 
