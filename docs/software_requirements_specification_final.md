@@ -64,11 +64,11 @@ Software requirements defines what a system should do (functional requirements) 
 
 | ID  | Requirement     | 
 | :-------------: | :----------: | 
-| NFR11 | <Non-Functional Requirement 1> | 
-| NFR12 | < Non-Functional Requirement 2> |
-| NFR13 | < Non-Functional Requirement 3> |
-| NFR14 | … | 
-| NFR15 |  |
+| NFR11 | The page shall render the bar graph and retirement graph within 5 seconds of loading the page. | 
+| NFR12 | The summary container shall be scrollable so the user can navigate to the financial suggestion below their information. |
+| NFR13 | The containers shall have zoom functionalities so users with vision impairments can enlarge text. |
+| NFR14 | The retirement graph shall be correctly calculated to show the growth from the users current age to their desired retirement age. | 
+| NFR15 | The system shall suggest an action based on the numerical values from the users financial form. |
 
 # Software Artifacts
 
