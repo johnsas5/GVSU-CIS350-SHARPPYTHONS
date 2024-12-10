@@ -72,6 +72,26 @@ Software requirements defines what a system should do (functional requirements) 
 
 # Software Artifacts
 
-<Describe the purpose of this section>
+The purpose of software artifacts is to visually document the development process. These will serve as deliverables and representations of our work throughout the software lifecycle. The diagrams show interactions between the different parts of our application. Atrifacts are crucial for the designing, planning, development, and testing of a system.
 
-* [I am a link](to_some_file.pdf)
+* [Use Case Diagram](artifacts/use-case-diagram/Use-case.png)
+* [UML Diagram](artifacts/Budgeting Tool UML - Class Diagram.pdf)
+* [Sequence Diagram](artifacts/Sequence Diagram.pdf)
+* [Gantt Chart](artifacts/Gantt Chart.pdf)
+* [UI Markup](artifacts/ui-markup.PNG)
+
+## Unit tests
+
+(copy/paste the below table a minimum of 4 times)
+
+| ID  | Description | Steps | Input Values | Expected Output | Actual Output | Pass/Fail | Requirement Link |
+| :-------------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: | :----------: |
+| TC1 | <TC1 description> | <steps to execute TC1> | <input values to this test case> | <expected output as a result of test case> | <actual output of test case> | <did it pass or fail?> | <requirement IDs this test case is linked to> |
+
+## Integration tests
+
+(copy/paste the above table a minimum of 3 times)
+
+## System tests
+
+(copy/paste the above table a minimum of 3 times)
