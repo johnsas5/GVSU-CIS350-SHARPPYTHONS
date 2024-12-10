@@ -28,7 +28,7 @@ Software requirements defines what a system should do (functional requirements) 
 | FR9 | The user shall be redirected to the financial form upon a successful login. |
 | FR10 | The login contain shall have a submit button that sends to the input data to the server once clicked. |
 
-### Account Summary Page
+### Account Summary
 
 | ID  | Requirement     | 
 | :-------------: | :----------: |
@@ -40,14 +40,35 @@ Software requirements defines what a system should do (functional requirements) 
 
 ## Non-Functional Requirements
 
-### <Name of Feature 1> 
+### Financial Form 
 
 | ID  | Requirement     | 
 | :-------------: | :----------: | 
-| NFR1 | <Non-Functional Requirement 1> | 
-| NFR2 | < Non-Functional Requirement 2> |
-| NFR3 | < Non-Functional Requirement 3> |
-| … | … | 
+| NFR1 | The users financial data shall be encrypted with AES-256 in the firebase server. | 
+| NFR2 | The financial form shall comply with GDPR guidelines (data used only for purpose of wesite). |
+| NFR3 | The server shall save all submissions to maintain a comprehensive paper trail. |
+| NFR4 | The user shall be redirected to the account summary within 5 seconds of submitting their data. | 
+| NFR5 | The financial form shall dynamically resize so users with varying resolutions can still use the website. |
+
+### Login Page
+
+| ID  | Requirement     | 
+| :-------------: | :----------: | 
+| NFR6 | The users login data shall be encrypted with AES-256 in the firebase server. | 
+| NFR7 |  |
+| NFR8 | < Non-Functional Requirement 3> |
+| NFR9 | … | 
+| NFR10 |  |
+
+### Account Summary
+
+| ID  | Requirement     | 
+| :-------------: | :----------: | 
+| NFR11 | <Non-Functional Requirement 1> | 
+| NFR12 | < Non-Functional Requirement 2> |
+| NFR13 | < Non-Functional Requirement 3> |
+| NFR14 | … | 
+| NFR15 |  |
 
 # Software Artifacts
 
