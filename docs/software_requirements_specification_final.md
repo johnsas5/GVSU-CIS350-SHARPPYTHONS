@@ -1,10 +1,10 @@
 # Overview
 
-<The purpose of this document, the Software Requirements Specification, is to describe the functional and non-functional requirements for the system we developed. The following will serve as a comprehensive guide for the stakeholders, developers, and our team to ensure we share a similar understanding of the websites objectives and capabilities. Here we will specify the expected functioality, performance, constraints, and user interactions. This will allow us to align our design and functionality with the completed application.>
+The purpose of this document, the Software Requirements Specification, is to describe the functional and non-functional requirements for the system we developed. The following will serve as a comprehensive guide for the stakeholders, developers, and our team to ensure we share a similar understanding of the websites objectives and capabilities. Here we will specify the expected functioality, performance, constraints, and user interactions. This will allow us to align our design and functionality with the completed application.
 
 # Software Requirements
 
-<Software requirements defines what a system should do (functional requirements) and its performance (non-functional requirements). Functional requirements describe specific tasks. These might include features or behaviors of the software. On the other hand, non-functional requirements outline the quality of the performance. These are attributes like performance, security, and scalability. Both are essential to ensure software is developed for the right purpose and functions correctly.>
+Software requirements defines what a system should do (functional requirements) and its performance (non-functional requirements). Functional requirements describe specific tasks. These might include features or behaviors of the software. On the other hand, non-functional requirements outline the quality of the performance. These are attributes like performance, security, and scalability. Both are essential to ensure software is developed for the right purpose and functions correctly.
 
 ## Functional Requirements
 
