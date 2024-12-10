@@ -8,7 +8,7 @@ Software requirements defines what a system should do (functional requirements) 
 
 ## Functional Requirements
 
-### <Financial Form> 
+### Financial Form
 
 | ID  | Requirement     | 
 | :-------------: | :----------: | 
