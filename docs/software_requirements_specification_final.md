@@ -18,7 +18,7 @@ Software requirements defines what a system should do (functional requirements) 
 | FR4 | The system shall validate the input data to only accept numerical values |
 | FR5 | The form shall have a submit button for the user to send their data to the server once completed. |
 
-### <Login Page>
+### Login Page
 
 | ID  | Requirement     | 
 | :-------------: | :----------: |
